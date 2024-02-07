@@ -51,30 +51,30 @@ Evaluations of modern LLMs may be biased and affected by many factors, we are al
 We employ [MGSM](https://github.com/google-research/url-nlp/tree/main/mgsm) to evaluate the math reasoning abilities, which is a multilingual benchmark. It compares the result with correct answers and evaluates the model's ability to perform mathematical reasoning.
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
-|Bloomz-7b1-mt | Bloomz-7b1 | xP3mt | 2.8 | 1.6 | 2.0 | 0.4 | 2.8 | 1.7 |
-|Phoenix-inst-chat-7b | Bloomz-7b1 | Phoenix SFT data | 3.2 | 3.2 | 2.8 | 3.2 | 3.2 | 3.1 |
-|PolyLM-Multialpaca-13b | PolyLM-13b | Multialpaca | 1.2 | 2.8 | 1.6 | 2.8 | 2.4 | 2.4 |
-|PolyLM-Chat-13b | PolyLM-13b | Closed-source | 10.8 | 6.4 | 4.8 | 4.4 | 5.6 | 5.3 |
-|Chimera-inst-chat-13b | Llama-13b | Phoenix SFT data | 14.0 | 11.6 | 10.0 | 12.0 | 12.8 | 11.6 |
-|Okapi-7b |  Llama-2-7b |  Okapi Dataset | 4.0 | 2.4 | 3.6 | 4.4 | 4.8 | 3.8 |
-|Guanaco-7b | Llama-2-7b | Guanaco Dataset | 4.0 | 1.6 | 3.2 | 2.8 | 4.4 | 3.0 |
-|Guanaco-13b | Llama-2-13b | Guanaco Dataset | 13.6 | 10.8 | 11.2 | 6.4 | 5.2 | 8.4 |
-|UltraLink-LM | Llama-2-13b | UltraLink | 70.4 | 56.0 | 70.4 | 64.8 | 63.6 | 63.7  |
+|Bloomz-7b1-mt | 2.8 | 1.6 | 2.0 | 0.4 | 2.8 | 1.7 |
+|Phoenix-inst-chat-7b | 3.2 | 3.2 | 2.8 | 3.2 | 3.2 | 3.1 |
+|PolyLM-Multialpaca-13b | 1.2 | 2.8 | 1.6 | 2.8 | 2.4 | 2.4 |
+|PolyLM-Chat-13b | 10.8 | 6.4 | 4.8 | 4.4 | 5.6 | 5.3 |
+|Chimera-inst-chat-13b  | 14.0 | 11.6 | 10.0 | 12.0 | 12.8 | 11.6 |
+|Okapi-7b | 4.0 | 2.4 | 3.6 | 4.4 | 4.8 | 3.8 |
+|Guanaco-7b | 4.0 | 1.6 | 3.2 | 2.8 | 4.4 | 3.0 |
+|Guanaco-13b | 13.6 | 10.8 | 11.2 | 6.4 | 5.2 | 8.4 |
+|UltraLink-LM| 70.4 | 56.0 | 70.4 | 64.8 | 63.6 | 63.7  |
 
 #### OMGEval
 We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat ability, which is a multilingual version of the widely-used English benchmark AlpacaEval.
 
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
-|Bloomz-7b1-mt | Bloomz-7b1 | xP3mt | 0.0 | 0.9 | 0.1 | 0.5 | 0.3 | 0.4 |
-|Phoenix-inst-chat-7b | Bloomz-7b1 | Phoenix SFT data | 6.9 | 13.3 | 7.4 | 2.9 | 8.1 | 7.7 |
-|PolyLM-Multialpaca-13b | PolyLM-13b | Multialpaca | 3.4 | 5.0 | 2.1 | 5.1 | 2.2 | 3.6 |
-|PolyLM-Chat-13b | PolyLM-13b | Closed-source | 7.7 | 14.0 | 6.1 | 5.5 | 4.8 | 7.6 |
-|Chimera-inst-chat-13b | Llama-13b | Phoenix SFT data | 15.5 | 9.7 | 11.8 | 13.7 | 13.8 | 12.9 |
-|Okapi-7b |  Llama-2-7b |  Okapi Dataset | 8.8 | 6.2 | 5.0 | 12.1 | 8.7 | 8.2 |
-|Guanaco-7b | Llama-2-7b | Guanaco Dataset | 4.6 | 3.8 | 0.4 | 1.8 | 1.2 | 2.4 |
-|Guanaco-13b | Llama-2-13b | Guanaco Dataset |  29.0 | 8.6 | 16.9 | 15.4 | 17.3 | 17.5 |
-|UltraLink-LM | Llama-2-13b | UltraLink |  28.8 |  21.9 |  23.5 |  37.6 |  29.0 |  28.2  |
+|Bloomz-7b1-mt | 0.0 | 0.9 | 0.1 | 0.5 | 0.3 | 0.4 |
+|Phoenix-inst-chat-7b  | 6.9 | 13.3 | 7.4 | 2.9 | 8.1 | 7.7 |
+|PolyLM-Multialpaca-13b  | 3.4 | 5.0 | 2.1 | 5.1 | 2.2 | 3.6 |
+|PolyLM-Chat-13b | 7.7 | 14.0 | 6.1 | 5.5 | 4.8 | 7.6 |
+|Chimera-inst-chat-13b | 15.5 | 9.7 | 11.8 | 13.7 | 13.8 | 12.9 |
+|Okapi-7b | 8.8 | 6.2 | 5.0 | 12.1 | 8.7 | 8.2 |
+|Guanaco-7b  | 4.6 | 3.8 | 0.4 | 1.8 | 1.2 | 2.4 |
+|Guanaco-13b  |  29.0 | 8.6 | 16.9 | 15.4 | 17.3 | 17.5 |
+|UltraLink-LM |  28.8 |  21.9 |  23.5 |  37.6 |  29.0 |  28.2  |
 
 </p>
 </details>
