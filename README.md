@@ -7,7 +7,7 @@
  <a href="#UltraLink"> UltraLink</a> •
   <a href="#UltraLink-LM">UltraLink-LM</a> •
   <a href="#Construction-of-UltraLink">Construction Process</a> •
-  <a href="https://arxiv.org/abs/2305.14233">Paper</a>
+  <a href="https://arxiv.org/abs/2402.04588">Paper</a>
 </p>
 
 </div>
@@ -123,4 +123,12 @@ In this study, we consider three key components of general abilities for LLMs: c
 Feel free to cite the repo if you think UltraLink is useful.
 
 ```bibtex
+@misc{wang2024ultralink,
+      title={UltraLink: An Open-Source Knowledge-Enhanced Multilingual Supervised Fine-tuning Dataset}, 
+      author={Haoyu Wang and Shuo Wang and Yukun Yan and Xujia Wang and Zhiyu Yang and Yuzhuang Xu and Zhenghao Liu and Ning Ding and Xu Han and Zhiyuan Liu and Maosong Sun},
+      year={2024},
+      eprint={2402.04588},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
