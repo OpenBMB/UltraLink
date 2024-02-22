@@ -1,24 +1,27 @@
 <div align="center">
-      <img src="title.png" alt="UltraLink" width="200" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
-      <p align="center">
-      <a href="#UltraLink">UltraLink</a> •
-      <a href="#UltraLink-LM">UltraLink-LM</a> •
-      <a href="#Construction-of-UltraLink">Construction Process</a> •
-      <a href="https://arxiv.org/abs/2402.04588">Paper</a> <br>
-      <a href="https://github.com/R0k1e/UltraLink"> Github </a> •
-      <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> Huggingface Dataset</a> •
-      <a href="https://huggingface.co/R0k1e/UltraLink-LM"> Huggingface Model</a>
-      </p>
+
+<img src="title.png" alt="UltraLink" width="200">
+
+**multi-lingual, knowledge-grounded data augmented, multi-round dialogue dataset UltraLink and the model**
+
+<p align="center">
+ <a href="#Introduction"> Introduction </a> •
+ <a href="#Construction-of-UltraLink">Construction Process</a> •
+ <a href="https://arxiv.org/abs/2402.04588">Paper</a>
+ <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> UltraLink</a> •
+ <a href="https://huggingface.co/R0k1e/UltraLink-LM"> UntraLink-LM</a>
+</p>
 </div>
 
 ## News
 - ❗️❗️ Febrary 6, 2024: Releasing a multi-lingual, knowledge-grounded data augmented, multi-round dialogue dataset UltraLink and the model weight of UltraLink-LM.
 
-## UltraLink
+## Introduction
+### UltraLink
 UltraLink is a multi-lingual, knowledge-grounded data augmented, multi-round dialogue dataset. It contains language-specific chat data, language-agnostic chat data, code data and math data in 5 languages: English, Chinese, Spanish, Russian, and French. It can be downloaded in this huggingface [link](https://huggingface.co/datasets/R0k1e/UltraLink).
 Different from previous works that simply translate English instructions, we consider both the language-specific and language-agnostic abilities of LLMs. Firstly, we introduce a knowledge-grounded data augmentation approach to elicit more culture-specific knowledge of LLMs, improving their ability to serve users from different countries. Moreover, we find modern LLMs possess strong cross-lingual transfer capabilities, thus repeatedly learning identical content in various languages is not necessary. Consequently, we can substantially prune the language-agnostic SFT data without any performance degradation, making multilingual SFT more efficient. 
 
-## UltraLink-LM
+### UltraLink-LM
 > The UltraLink-LM is a massively multilingual generative language model that follows instructions in 5 languages, English, French, Russian, Spanish, and Chinese. The model is capable of generating text in 5 languages with high quality and diversity.
 > UltraLink-LM outperforms [PolyLM-Chat-13b](https://huggingface.co/DAMO-NLP-MT/polylm-chat-13b), [Guanaco](JosephusCheung/Guanaco),  and [Bloomz-7b1-mt](https://huggingface.co/bigscience/bloomz-7b1-mt) in code, math and chat abilities in four languages, and has a high-quality and diverse text generation performance in all languages.
 > The UltraLink-LM is trained using [UltraLink](https://huggingface.co/datasets/R0k1e/UltraLink), [UltraChat](https://huggingface.co/datasets/stingning/ultrachat), [Magicoder-Evol](https://huggingface.co/datasets/ise-uiuc/Magicoder-Evol-Instruct-110K), [Magicoder-OSS](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K), [MetaMathQA](https://huggingface.co/datasets/meta-math/MetaMathQA), and [ShareGPT](https://huggingface.co/datasets/openchat/openchat_sharegpt4_dataset/).
