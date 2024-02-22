@@ -1,4 +1,6 @@
-<img src="title.png" alt="UltraLink" width="200" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
+<div align="center">
+      <img src="title.png" alt="UltraLink" width="200" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
+</div>
 
 <div align="center">
 
