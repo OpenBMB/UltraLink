@@ -2,7 +2,7 @@
 
 <img src="title.png" alt="UltraLink" width="200">
 
-**multi-lingual, knowledge-grounded data augmented, multi-round dialogue dataset UltraLink and the model UltraLink-LM**
+**multi-lingual, knowledge-grounded, multi-round dialogue dataset and model**
 
 <p align="center">
  <a href="#Introduction"> Introduction </a> •
