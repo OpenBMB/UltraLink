@@ -108,7 +108,7 @@ The data consists of four parts, code data, math data, language-specific chat da
 ### Data Format
 Each line in the downloaded data file is a json dict containing the data id and dialogue data in a list format. The id is begin wizh the file name and connected with the sequence number. Below is an example line.
 
-```JSON
+```
 {"id": "en_chat_agnostic_0", "data": ["At the beginning of the training, tell me about an ice breaker that will help participants relax.", "Sure, here's an ice breaker activity that you can use
  to help participants relax and get to know each other:\n\n\"Two Truths and a Lie\"\n\nAsk each participant to come up with three statements about themselves, two of which are true and one of w
 hich is false. The other participants then have to guess which statement is the lie.\n\nThis activity is a great way to get to know each other while having some fun. It's also a good way to enc
