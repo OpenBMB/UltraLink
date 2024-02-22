@@ -7,7 +7,7 @@
 <p align="center">
  <a href="#Introduction"> Introduction </a> •
  <a href="#Construction-of-UltraLink">Construction Process</a> •
- <a href="https://arxiv.org/abs/2402.04588">Paper</a>
+ <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
  <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> UltraLink</a> •
  <a href="https://huggingface.co/R0k1e/UltraLink-LM"> UltraLink-LM</a>
 </p>
