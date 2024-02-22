@@ -3,8 +3,8 @@
       <p align="center">
       <a href="#UltraLink">UltraLink</a> •
       <a href="#UltraLink-LM">UltraLink-LM</a> •
-      <a href="#Construction-of-UltraLink">Construction Process</a> <br>
-      <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
+      <a href="#Construction-of-UltraLink">Construction Process</a> •
+      <a href="https://arxiv.org/abs/2402.04588">Paper</a> <br>
       <a href="https://github.com/R0k1e/UltraLink"> Github </a> •
       <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> Huggingface Dataset</a> •
       <a href="https://huggingface.co/R0k1e/UltraLink-LM"> Huggingface Model</a>
