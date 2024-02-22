@@ -1,4 +1,4 @@
-<img src="title.png" alt="UltraLink" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
+<img src="title.png" alt="UltraLink" width="200" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
 
 <div align="center">
 
@@ -117,7 +117,6 @@ t memorable vacation, and then guess which one is the lie.", "Tell me another ic
  famous person, fictional character, or historical figure on a sticky note, and then stick it on the forehead of each participant without showing them who they are. Each participant has to ask 
 yes or no questions to figure out who they are.\n\nThis activity is a fun and engaging way to break the ice and get people talking to each other. It's also a great way to encourage creative thi
 nking and problem-solving. You can modify the activity to suit your group's preferences, such as using famous quotes or song lyrics instead of famous people."]}
-
 ```
 
 ## Construction of UltraLink
