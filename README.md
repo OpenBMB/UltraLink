@@ -1,21 +1,14 @@
 <div align="center">
       <img src="title.png" alt="UltraLink" width="200" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
-</div>
-
-<div align="center">
-
-
-
-<p align="center">
- <a href="#UltraLink">UltraLink</a> •
-  <a href="#UltraLink-LM">UltraLink-LM</a> •
-  <a href="#Construction-of-UltraLink">Construction Process</a> •
-  <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
-  <a href="https://github.com/R0k1e/UltraLink"> Github </a><br>
-  <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> Huggingface Dataset</a> •
-  <a href="https://huggingface.co/R0k1e/UltraLink-LM"> Huggingface Model</a>
-</p>
-
+      <p align="center">
+      <a href="#UltraLink">UltraLink</a> •
+      <a href="#UltraLink-LM">UltraLink-LM</a> •
+      <a href="#Construction-of-UltraLink">Construction Process</a> <br>
+      <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
+      <a href="https://github.com/R0k1e/UltraLink"> Github </a> •
+      <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> Huggingface Dataset</a> •
+      <a href="https://huggingface.co/R0k1e/UltraLink-LM"> Huggingface Model</a>
+      </p>
 </div>
 
 ## News
