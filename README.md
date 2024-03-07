@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="title.png" alt="UltraLink" width="200">
+<img src="pictures/title.png" alt="UltraLink" width="200">
 
 **multi-lingual, knowledge-grounded, multi-round dialogue dataset and model**
 
@@ -150,7 +150,7 @@ Each line in the downloaded data file is a json dict containing the data id and 
 ```
 
 ## Construction of UltraLink
-<img src="flow_diagram.png" alt="flow diagram" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
+<img src="pictures/flow_diagram.png" alt="flow diagram" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
  In this work, we propose a construction framework consisting of two pipelines. The language-specific pipeline employs a newly introduced knowledge-grounded data augmentation approach to generate conversations with detailed cultural backgrounds. The language-agnostic pipeline leverages a two-stage translation mechanism to effectively utilize the existing English SFT data, with fewer translation errors caused by cultural differences. 
  
 ### Pipeline 1: Language-Specific Pipeline

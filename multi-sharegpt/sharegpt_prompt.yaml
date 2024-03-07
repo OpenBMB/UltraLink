@@ -1,0 +1,76 @@
+- language: zh
+  text: 原文：
+  translation: 翻译：
+  prompt1: >
+    将给定英语原文翻译成汉语，在翻译过程中注意保证语句的*通顺与自然*。
+    ###
+    注意遵循以下翻译规则：
+    1.在翻译过程中务必保证内容的完整性和一致性，不得添加或删除任何信息。
+    2.请确保翻译后的文本语言通顺自然，尽可能使用汉语中最常见的表达方式，专业名词采用对应的规定翻译，符合汉语表达习惯。
+    3.如果某些词汇并不是自然语言，而是数学符号，编程语言或LaTex语言，请直接复制原文。
+    4.如果某些词汇没有汉语对应词汇，请直接复制原文。
+    5.对于引用和参考文献，请直接复制原文。
+    ###
+    示例：
+    原文：
+    What time is it?
+    翻译：
+    现在几点了？
+  prompt2: >
+- language: ru
+  text: 'Оригинальный текст:'
+  translation: 'Перевод:'
+  prompt1: >
+    Переведите заданный английский оригинал на русский язык, следя за тем, чтобы в процессе перевода высказывания были *плавными и естественными*.
+    ###
+    Обратите внимание на следующие правила перевода: 
+    1. В процессе перевода следите за тем, чтобы содержание было полным и последовательным, не добавляйте и не удаляйте никакой информации. 
+    2. следите за тем, чтобы переведенный текст был лингвистически беглым и естественным, максимально используя наиболее употребительные выражения на русском языке, а специализированная терминология переводилась с использованием соответствующих правил, в соответствии с условностями русского выражения. 
+    3. если некоторые слова написаны не на естественном языке, а математическими символами, языком программирования или языком LaTex, пожалуйста, скопируйте оригинальный текст напрямую. 
+    4. если для какого-либо термина нет русского эквивалента, пожалуйста, копируйте оригинальный текст напрямую. 
+    5. для цитат и ссылок, пожалуйста, копируйте оригинальный текст напрямую.
+    ###
+    Пример: 
+    оригинальный текст:
+    What time is it?
+    Перевод:
+    Который час?
+  prompt2: >
+- language: es
+  text: 'Texto original:'
+  translation: 'Traducción:'
+  prompt1: >
+    Traduzca al español el texto original inglés dado, procurando que las frases *fluyan con fluidez y naturalidad* durante la traducción.
+    ###
+    Tenga cuidado de seguir las siguientes normas de traducción: 
+    1. En el proceso de traducción, asegúrese de garantizar la integridad y coherencia del contenido, y no añada ni suprima información. 
+    2. Asegúrese de que el texto traducido sea lingüísticamente fluido y natural, utilizando las expresiones más comunes en español siempre que sea posible, y que los términos técnicos se traduzcan utilizando la normativa correspondiente, de acuerdo con las expresiones españolas. 
+    3. Si algunos de los términos no están en lenguaje natural, sino que son símbolos matemáticos, lenguaje de programación o lenguaje LaTex, copie directamente el texto original. 
+    4. Si un término no tiene equivalente en español, cópielo directamente del original. 
+    5. Para citas y referencias, por favor copie directamente el texto original.
+    ###
+    Ejemplo: 
+    Texto original:
+    What time is it?
+    Traducción:
+    ¿Qué hora es?
+  prompt2: >
+- language: fr
+  text: 'Texte original :'
+  translation: 'Traduction :'
+  prompt1: >
+    Traduisez le texte original anglais en français, en veillant à ce que les phrases *coulent de manière fluide et naturelle* pendant la traduction.
+    ###
+    Veillez à respecter les règles de traduction suivantes : 
+    1) Veillez à l'exhaustivité et à la cohérence du contenu pendant le processus de traduction, et n'ajoutez ni ne supprimez aucune information. 
+    2) Veillez à ce que le texte traduit soit linguistiquement fluide et naturel, en utilisant autant que possible les expressions les plus courantes en français, et à ce que les termes techniques soient traduits en utilisant les réglementations correspondantes, conformément à l'expression française. 
+    3) Si un terme n'est pas une langue naturelle, mais un symbole mathématique, un langage de programmation ou un langage LaTex, veuillez le copier directement à partir du texte original. 
+    4) S'il n'existe pas d'équivalent français pour un terme, veuillez le copier directement à partir du texte original. 
+    5) Pour les citations et les références, veuillez copier directement le texte original.
+    ###
+    Exemple : 
+    texte original :
+    What time is it?
+    Traduction :
+    Quelle heure est-il ?
+  prompt2: >

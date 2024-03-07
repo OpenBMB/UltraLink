@@ -1,0 +1,154 @@
+- language: zh
+  text: 原文：
+  translation: 翻译：
+  prompt1: >
+    将以下数学题中题干翻译为汉语，你必须要遵循以下几点要求：
+    1.保持文本中的数字、符号与LaTex转义字符不变。LaTex转义字符是指以反斜杠开头的字符串，如 \frac{1}{2}，\cdot 等，这些字符串通常被 '$' 符号包围，如 '$x = \frac{1}{2}$'。在翻译过程中将这些符号复制即可。
+    2.剩余文本内容全部翻译成汉语，特别是人名，人名翻译成汉语中最常见的对应形式。如将“Joe”翻译成 “乔”。
+    3.在翻译过程中需要保证用词准确与严谨，需要将原文中的数学相关词语准确专业地翻译成汉语中相应的数学术语，并且尽可能地使得语言自然而流畅。
+    4.在翻译过程中需要保证内容完整，含义与原文一致，不允许添加或删除任何信息。
+    示例：
+    原文：
+    <text>Gracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?<\text>
+    翻译：
+    格蕾丝和乔在复平面上选择数字。乔选择了点$1+2i$。格蕾丝选择了$-1+i$。格蕾丝和乔选择的点有多远？
+  prompt2: >
+    将以下数学题中回答翻译为汉语，你必须要遵循以下几点要求：
+    1.保持文本中的数字、符号与LaTex转义字符不变。LaTex转义字符是指以反斜杠开头的字符串，如 \frac{1}{2}，\cdot 等，这些字符串通常被 '$' 符号包围，如 '$x = \frac{1}{2}$'。在翻译过程中将这些符号复制即可。
+    2.剩余文本内容全部翻译成汉语，特别是人名，人名翻译成汉语中最常见的对应形式。如将“Joe”翻译成 “乔”。
+    3.在翻译过程中需要保证用词准确与严谨，需要将原文中的数学相关词语准确专业地翻译成汉语中相应的数学术语，并且尽可能地使得语言自然而流畅。
+    4.在翻译过程中需要保证内容完整，含义与原文一致，不允许添加或删除任何信息。
+    示例：
+    原文：
+    <text>Dave bought a total of 8 + 6 + 3 = 17 books.
+    Each book cost $6, so Dave spent a total of 17 x $6 = $102 on the books.
+    #### 102
+    The answer is: 102<\text>
+    翻译：
+    戴夫买了总共8 + 6 + 3 = 17本书。
+    每本书的价格是6美元，所以戴夫在这些书上总共花费了17 x 6 = 102美元。
+    #### 102
+    答案是：102
+- language: ru
+  text: 'Оригинальный текст:'
+  translation: 'Перевод:'
+  prompt1: >
+    Чтобы перевести на русский язык стебель в следующем математическом вопросе, необходимо следовать следующим требованиям:
+    1. Сохраните цифры, символы и символы LaTex в тексте без изменений. Символы LaTex - это строки, начинающиеся с обратной косой черты, такие как \frac{1}{2}, \cdot и т. д. Эти строки обычно окружены символами '$', например, '$x = \frac{1}{2}$'. Просто скопируйте эти символы при переводе.
+    2. переведите весь оставшийся текст на русский язык, особенно имена людей, которые переводятся в наиболее распространенные русские эквиваленты. Например, переведите "Joe" в "Джо".
+    3. в процессе перевода необходимо обеспечить точность и строгость терминологии, необходимость точно и профессионально перевести математические слова в оригинальном тексте в соответствующую математическую терминологию на русском языке и, насколько это возможно, сделать язык как можно более естественным и беглым.
+    4. в процессе перевода необходимо следить за тем, чтобы содержание было полным, а смысл соответствовал оригинальному тексту, не допускается добавление или удаление какой-либо информации.
+    Пример:
+    Оригинальный текст:
+    <text>Gracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?<\text>
+    Перевод:
+    Грейс и Джо выбирают числа на комплексной плоскости. Джо выбирает точку $1+2i$. Грейс выбирает $-1+i$. На каком расстоянии друг от друга находятся точки, выбранные Грейс и Джо?
+  prompt2: >
+    Чтобы перевести ответы на следующие вопросы по математике на русский язык, необходимо следовать следующим требованиям:
+    1. Сохраните цифры, символы и символы LaTex в тексте без изменений. Символы LaTex - это строки, начинающиеся с обратной косой черты, такие как \frac{1}{2}, \cdot и т. д. Эти строки обычно окружены символами '$', например, '$x = \frac{1}{2}$'. Просто скопируйте эти символы при переводе.
+    2. переведите весь оставшийся текст на русский язык, особенно имена людей, которые переводятся в наиболее распространенные русские эквиваленты. Например, переведите "Joe" в "Джо".
+    3. в процессе перевода необходимо обеспечить точность и строгость терминологии, необходимость точно и профессионально перевести математические слова в оригинальном тексте в соответствующую математическую терминологию на русском языке и, насколько это возможно, сделать язык как можно более естественным и беглым.
+    4. в процессе перевода необходимо следить за тем, чтобы содержание было полным, а смысл соответствовал оригинальному тексту, не допускается добавление или удаление какой-либо информации.
+    Пример:
+    Оригинальный текст:
+    <text>Dave bought a total of 8 + 6 + 3 = 17 books.
+    Each book cost $6, so Dave spent a total of 17 x $6 = $102 on the books.
+    #### 102
+    The answer is: 102<\text>
+    Перевод:
+    Дейв купил в общей сложности 8 + 6 + 3 = 17 книг.
+    Каждая книга стоила $6, поэтому Дэйв потратил на книги в общей сложности 17 x $6 = $102.
+    #### 102
+    Ответ: 102
+- language: es
+  text: 'Texto original:'
+  translation: 'Traducción:'
+  prompt1: >
+    Para traducir al español la raíz de la siguiente pregunta de matemáticas, debes seguir los siguientes requisitos:
+    1. Mantener los números y símbolos del texto sin cambios, junto con los caracteres de escape de LaTex, que son cadenas que empiezan con una barra invertida, como \frac{1}{2}, \cdot, etc. Estas cadenas suelen ir rodeadas de símbolos '$', como '$x = \frac{1}{2}$'. Basta con copiar estos símbolos en el proceso de traducción.
+    2. El resto del texto se traduce al español, especialmente los nombres de personas, que se traducen a los equivalentes más comunes en español. Por ejemplo, traduce "Joe" por "Joe".
+    3. En el proceso de traducción, hay que garantizar el uso de palabras precisas y rigurosas, hay que traducir con precisión y profesionalidad las palabras matemáticas del texto original a la terminología matemática correspondiente en español y, en la medida de lo posible, hacer que el lenguaje sea lo más natural y fluido posible.
+    4. En el proceso de traducción, tenemos que asegurarnos de que el contenido es completo y el significado es coherente con el texto original, y no se nos permite añadir o eliminar ninguna información.
+    Ejemplo:
+    Texto original:
+    <text>Gracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?<\text>
+    Traducción:
+    Grace y Joe eligen números en el plano complejo. Joe elige el punto $1+2i$. Grace elige $-1+i$. ¿A qué distancia están los puntos elegidos por Grace y Joe?
+  prompt2: >
+    Para traducir las respuestas de las siguientes preguntas de matemáticas al español, debes seguir los siguientes requisitos:
+    1. Mantener los números y símbolos del texto sin cambios, junto con los caracteres de escape LaTex.Los caracteres de escape LaTex son cadenas que comienzan con una barra invertida, como \frac{1}{2}, \cdot, etc. Estas cadenas suelen estar rodeadas de símbolos '$', como '$x = \frac{1}{2}$'. Basta con copiar estos símbolos en el proceso de traducción.
+    2. El resto del texto se traduce al español, especialmente los nombres de personas, que se traducen a los equivalentes más comunes en español. Por ejemplo, traduce "Joe" por "Joe".
+    3. En el proceso de traducción, hay que garantizar el uso de palabras precisas y rigurosas, hay que traducir con precisión y profesionalidad las palabras matemáticas del texto original a la terminología matemática correspondiente en español y, en la medida de lo posible, hacer que el lenguaje sea lo más natural y fluido posible.
+    4. En el proceso de traducción, tenemos que asegurarnos de que el contenido es completo y el significado es coherente con el texto original, y no se nos permite añadir o eliminar ninguna información.
+    Ejemplo:
+    Texto original:
+    <text>Dave bought a total of 8 + 6 + 3 = 17 books.
+    Each book cost $6, so Dave spent a total of 17 x $6 = $102 on the books.
+    #### 102
+    The answer is: 102<\text>
+    Traducción:
+    Dave compró un total de 8 + 6 + 3 = 17 libros.
+    Cada libro cuesta $6, así que Dave gastó un total de 17 x 6 = $102 en estos libros.
+    #### 102
+    La respuesta es: 102
+- language: fr
+  text: 'Texte original :'
+  translation: 'Traduction :'
+  prompt1: >
+    Pour traduire en français l'énoncé de la question de mathématiques suivante, vous devez respecter les conditions suivantes :
+    1. conserver les chiffres et les symboles du texte inchangés, ainsi que les caractères d'échappement LaTex. Les caractères d'échappement LaTex sont des chaînes qui commencent par une barre oblique inverse, telles que \frac{1}{2}, \cdot, etc. Il suffit de copier ces symboles dans le processus de traduction.
+    2) Le reste du texte est traduit en français, en particulier les noms de personnes, qui sont traduits par leurs équivalents français les plus courants. Par exemple, traduisez "Joe" en "Joe".
+    3) Dans le processus de traduction, nous devons nous assurer de la précision et de la rigueur des mots utilisés, nous devons traduire avec précision et professionnalisme les mots mathématiques du texte original dans la terminologie mathématique correspondante en français et, dans la mesure du possible, rendre la langue aussi naturelle et fluide que possible.
+    4) Dans le processus de traduction, nous devons nous assurer que le contenu est complet, que le sens est cohérent avec le texte original et que nous ne sommes pas autorisés à ajouter ou à supprimer des informations.
+    Exemple :
+    Texte original :
+    <text>Gracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?<\text>
+    Traduction :
+    Grace et Joe choisissent des nombres dans le plan complexe. Joe choisit le point $1+2i$. Grace choisit $-1+i$. A quelle distance se trouvent les points choisis par Grace et Joe ?
+  prompt2: >
+    Pour traduire en français les réponses aux questions de mathématiques suivantes, vous devez respecter les conditions suivantes :
+    1. conserver les nombres et les symboles du texte ainsi que les caractères d'échappement LaTex. Les caractères d'échappement LaTex sont des chaînes de caractères qui commencent par une barre oblique inverse, comme \frac{1}{2}, \cdot, etc. Il suffit de copier ces symboles dans le processus de traduction.
+    2) Le reste du texte est traduit en français, en particulier les noms de personnes, qui sont traduits par leurs équivalents français les plus courants. Par exemple, traduisez "Joe" en "Joe".
+    3) Dans le processus de traduction, nous devons nous assurer de la précision et de la rigueur des mots utilisés, nous devons traduire avec précision et professionnalisme les mots mathématiques du texte original dans la terminologie mathématique correspondante en français et, dans la mesure du possible, rendre la langue aussi naturelle et fluide que possible.
+    4) Dans le processus de traduction, nous devons nous assurer que le contenu est complet, que le sens est cohérent avec le texte original et que nous ne sommes pas autorisés à ajouter ou à supprimer des informations.
+    Exemple :
+    Texte original :
+    <text>Dave bought a total of 8 + 6 + 3 = 17 books.
+    Each book cost $6, so Dave spent a total of 17 x $6 = $102 on the books.
+    #### 102
+    The answer is: 102<\text>
+    Traduction :
+    Dave a acheté un total de 8 + 6 + 3 = 17 livres.
+    Chaque livre coûtant 6 $, Dave a donc dépensé un total de 17 x 6 = 102 $ pour ces livres.
+    #### 102
+    La réponse est : 102
+- language: ja
+  text: "原文:"
+  translation: "翻訳する："
+  prompt1: >
+    次の数学の問題の語幹を日本語に訳すには、以下の条件に従わなければなりません：
+    1.テキスト中の数字と記号をLaTexエスケープ文字から変更しない。LaTexエスケープ文字は、バックスラッシュで始まる文字列です，例えば \frac{1}{2}，\cdot，これらの文字列は通常'$'記号で囲まれます，例えば '$x = \frac{1}{2}$'。翻訳プロセスでは、これらの記号をコピーするだけでよい。
+    2.残りのテキストをすべて日本語に翻訳，特に人名は、日本語に訳された人名に相当するものが多い。例えば、"Joe "は「ジョー」と訳される。
+    3.翻訳の過程では、専門用語の正確さと厳密さを保証し、原文の数学用語を正確かつ専門的に日本語の対応する数学用語に翻訳し、できるだけ自然で流暢な言葉にする必要がある。
+    4.翻訳の過程では、内容が完全であること、原文と意味が一致していることを確認する必要があり、情報を追加したり削除したりすることは許されない。
+    例：
+    原文：
+    <text>Gracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?<\text>
+    翻訳する：
+    グレースとジョーは複素平面上の数を選ぶ。ジョーは $1+2i$ を選ぶ。グレースさんは $-1+i$ を選ぶ。グレースとジョーが選んだ点は、どのくらい離れているか？
+  prompt2: >
+    以下の数学の問題の答えを日本語に訳すには、以下の条件に従わなければなりません：
+    1.テキスト中の数字と記号をLaTexエスケープ文字から変更しない。LaTexエスケープ文字は、バックスラッシュで始まる文字列です，例えば \frac{1}{2}，\cdot，これらの文字列は通常'$'記号で囲まれます，例えば '$x = \frac{1}{2}$'。翻訳プロセスでは、これらの記号をコピーするだけでよい。
+    2.残りのテキストをすべて日本語に翻訳，特に人名は、日本語に訳された人名に相当するものが多い。例えば、"Joe "は「ジョー」と訳される。
+    3.翻訳の過程では、専門用語の正確さと厳密さを保証し、原文の数学用語を正確かつ専門的に日本語の対応する数学用語に翻訳し、できるだけ自然で流暢な言葉にする必要がある。
+    4.翻訳の過程では、内容が完全であること、原文と意味が一致していることを確認する必要があり、情報を追加したり削除したりすることは許されない。
+    例：
+    原文：
+    <text>Dave bought a total of 8 + 6 + 3 = 17 books.
+    Each book cost $6, so Dave spent a total of 17 x $6 = $102 on the books.
+    #### 102
+    The answer is: 102<\text>
+    翻訳する：
+    デイブは合計8＋6＋3＝17冊の本を買った。1冊6ドルなので、デイブはこれらの本に合計17×6＝102ドルを費やした。
+    #### 102
+    答えはこうだ：102
