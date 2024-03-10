@@ -1,0 +1,294 @@
+- language: zh # 和wikipedia的目录名相同，记得调用Monitor的时候设置language 为wikipedia的目录
+  language_type: '__label__yue_Hant' # 用utils.py 中的check_language_type函数输出的语言类型
+  context_head: "内容文本：" #以下几个翻译成对应语言即可，注意冒号
+  question_head: "问题："
+  answer_head: "回答："
+  dialog_head: "对话："
+  init_question_prompt: > #chatgpt翻译的时候可能没有 * ，注意加上
+    请你用汉语在理解了内容文本的含义的基础上，向读者提出1个读者在回答时可以充分扩展与延伸的问题。
+    在提出问题时，你给出的问题必须遵循以下几点*要求*：
+    1.在问题中添加时间，地点，涉及人物与事件等必要的背景信息，删除与问题无关的介绍和引入。
+    2.避免使用 "这些"， "这样"， "这里"， "这个"，"这" 等代词，将在问题中没有直接出现过的代词转换成内容文本中提到具体的名词，同时注意语序问题。
+    3.请精简问题，移除“文本”、“本文”、“上文”、“根据文本”、“根据上文”、“读完文本”等依赖外部文本的表达，确保问题本身独立完整，不依赖任何外部信息或上下文。目标是形成一个在没有外部文本支持的情况下也能完全理解和回答的问题。
+    4.你只需要简洁直接地提供1个开放性问题即可，避免一个问题含有多个连续的小问题，避免提供回答与问题序号。
+  init_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    提问题时可以参考以下几点*建议*：
+    1.提出为什么和怎么的问题: 通过文本中的描述，思考为什么某件事情会发生，或者是如何发生的。这样的问题可以引导回答者进行更深入的分析和解释，而不仅仅是简单的陈述事实。
+    2.对比与类比: 如果文本提到了某个现象或者观点，你可以尝试将其与其他类似的情况进行对比，然后提出问题来探讨它们之间的异同以及可能的影响。
+    3.预测未来发展: 如果文本提到了某个趋势或者发展方向，你可以提出问题来探讨未来可能会发生的变化，或者是对某个趋势的看法和预测。
+    4.引发思考和讨论: 提出开放性问题，鼓励回答者展开更深入的思考和讨论。
+  init_answer_prompt: >
+    请你用汉语以提供给你的内容文本作为知识背景，回答所提供的问题，并使回答尽可能逻辑清晰，内容完整。可以参考以下几点*建议*：
+    1.你需要理解内容文本的信息，对问题中可能涉及的细节进行逻辑推理，思考为什么某件事情会发生，或者是如何发生的，尝试分析更多背后的原因和影响。
+    2.如果问题提到了某个现象或者观点，你可以尝试将其与内容文中其他类似的情况进行对比，来探讨它们之间的异同以及可能的影响。
+    3.如果问题提到了某个趋势或者发展方向，你可以结合文本来探讨未来可能会发生的变化，或者是对某个趋势的看法和预测。
+    4.此外，对于问题你需要展开更深入的思考和讨论。这可能不容易用简单的答案回复，但能够引发更多的思考和交流。
+    在回答问题时，你必须遵循以下几点*要求*：
+    1.移除“文本”、“本文”、“上文”、“根据文本”、“根据上文”、“根据内容”、“读完文本”等依赖外部文本的表达，确保答案本身独立完整，不依赖任何外部信息或上下文。目标是形成一个在没有外部文本支持的情况下也十分合理和完整和答案。
+    2.你只需要简洁直接地提供1个逻辑清晰，内容完整的回答即可，避免提供问题与重复语句。
+  depth_question_prompt: >
+    请你用汉语在理解内容文本和已有对话的基础上，深入分析并提出1个更引人深思的问题。这个问题应该能够激发进一步的讨论，挖掘更深层次的见解，更加批判性地分析对话内容。
+    在提出问题时，你给出的问题必须遵循以下几点*要求*：
+    1.在问题中添加时间，地点，涉及人物与事件等必要的背景信息，删除与问题无关的介绍和引入。
+    2.请精简问题，移除“本文”、“上文”、“根据文本”、“根据上文”、“读完文本”等依赖外部文本的表达，确保问题本身独立完整，不依赖任何外部信息或上下文。目标是形成一个在没有外部文本支持的情况下也能完全理解和回答的问题。
+    3.删除问题中“读者可回答的问题是”、“可思考的问题是”、“值得深入思考”、“进一步探讨”、“一个更深入的问题”等和题干本身无关的相关字段，直接给出问题即可。
+    4.你只需要简洁直接地提供1个开放性的更加深入的问题即可，避免一个问题包含多个连续的小问题，避免提供回答与问题序号。
+  depth_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    提出更加深入的问题时可以参考以下几点*建议*：
+    1.理解上下文： 仔细阅读已有的对话，确保你对上下文有深刻的理解。问题可以基于对话中的某个观点或者主张，或者是对话中的某个细节，通过对这些信息的进一步探索来提出。
+    2.挖掘隐含信息： 对话中可能存在一些隐含的信息或者未明说的观点。试着推断对话背后的意义，然后将这些隐含信息转化为一个问题，以促使更深入的讨论。
+    3.挑战观点： 找到对话中的某个观点或主张，然后提出挑战性的问题，鼓励对方更深入地阐释或者重新考虑自己的观点。
+    4.引申话题： 从对话中提取一个关键词或主题，然后将其引申为一个更广泛或更深刻的话题。
+    5.提出开放性问题： 避免只提问需要简单回答的问题，而是尝试提出那些需要更多思考和讨论的问题。
+    6.关联其他领域： 将对话中的主题与其他领域或概念联系起来，提出跨学科的问题。
+    7.逻辑深入： 深入分析对话中的逻辑，提出关于论证、前提或结论的更深层次的问题。
+  width_question_prompt: >
+    用汉语在提供给你的内容文本和已有的对话的基础上，提出1个能够拓宽讨论视野的问题。这个问题能从更广泛的角度探讨话题，关联更多的背景知识或不同领域的见解。
+    在提出问题时，你给出的问题必须遵循以下几点*要求*：
+    1.在问题中添加时间，地点，涉及人物与事件等必要的背景信息，删除与问题无关的介绍和引入。
+    2.请精简问题，移除“文本”、“本文”、“上文”、“根据文本”、“根据上文”、“读完文本”等依赖外部文本的表达，确保问题本身独立完整，不依赖任何外部信息或上下文。目标是形成一个在没有外部文本支持的情况下也能完全理解和回答的问题。
+    3.删除问题中“读者可回答的问题是”、“可思考的问题是”、“进一步探讨”、“一个更广泛的问题”等和题干本身无关的相关字段，直接给出问题即可。
+    4.你只需要简洁直接地提供1个开放性的更加发散的问题即可，避免一个问题包含多个连续的小问题，避免提供回答与问题序号。
+  width_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    提出拓宽讨论视野的问题时可以参考以下几点*建议*：
+    1.抽象化主题： 将对话中的具体主题或案例抽象为更一般的概念或原则。问题可以基于对话中的某个观点或者主张，或者是对话中的某个细节，通过对这些信息的进一步探索来提出
+    2.引导到整体话题： 寻找对话中的关键词或共同点，然后将其引导到一个更宽泛的整体话题。例如，如果对话是关于特定的技术问题，你可以问关于整个行业趋势或技术创新的问题。
+    3.时空跨度： 考虑将对话中的主题与不同的时间或空间框架联系起来。问及历史发展、未来趋势或不同地区的情况，以扩展对话的范围。
+    4.关联相关领域： 将对话中的主题与其他相关领域联系起来，以提出更广泛的问题。
+    5.涉及更多利益相关方： 考虑对话中提到的利益相关方，然后提出一个问题，涉及更多不同角度和利益相关方的观点。
+    6.全球化视角： 将对话中的问题或主题放在全球范围内考虑，问及国际层面的影响、趋势或合作。
+    7.涉及人文和伦理层面： 提出关于对话主题的人文和伦理层面的问题，以扩大对话的范围并促使更加综合的讨论。
+  following_answer_prompt: >
+    用汉语以提供给你的内容文本作为知识背景回答所提供的问题，并使回答尽可能详细。可以参考以下几点*建议*：
+    1.仔细阅读问题： 确保你完全理解问题的每个方面。有时问题可能有多个部分，确保你已经考虑到所有这些方面。
+    2.查找关键信息： 在已有的对话和文档中查找与问题相关的关键信息。这可能包括事实、观点、数据等。确保你的回答能够直接与这些信息联系起来。
+    3.整理思路： 在回答问题之前，先整理一下你的思路。确定回答的结构，确保逻辑清晰，信息有条理。
+    4.引用文档和对话： 如果可能，引用具体的对话和文档中的信息来支持你的回答。这有助于增加回答的可信度。
+    5.简明扼要： 确保你的回答简明扼要，不要离题太远。集中于直接回答问题，同时提供足够的背景信息以支持你的立场。
+    6.避免歧义： 在回答中避免使用模糊或容易引起歧义的表达。确保你的回答清晰明了，不容易被误解。
+    7.提供深度和细节： 尽可能提供深度和细节，以充实你的回答。这可以通过举例、引用具体数据或详细解释观点来实现。
+    8.审查和编辑： 在提交之前仔细审查你的回答。检查拼写、语法和逻辑错误。确保回答完整、准确且易于理解
+    在回答问题时，你必须遵循以下几点*要求*：
+    1.移除“文本”、“本文”、“上文”、“根据文本”、“根据上文”、“根据内容”、“读完文本”等依赖外部文本的表达，确保答案本身独立完整，不依赖任何外部信息或上下文。目标是形成一个在没有外部文本支持的情况下也十分合理和完整和答案。
+    2.你只需要简洁直接地提供1个逻辑清晰，内容完整的回答即可，避免提供问题与重复语句。
+
+- language: ru
+  language_type: '__label__rus_Cyrl' # 用check_language_type.py里面的语言类型
+  context_head: "Содержание текста:" #以下几个翻译成对应语言即可，注意冒号
+  question_head: "Вопрос:"
+  answer_head: "Ответ:"
+  dialog_head: "Диалог:"
+  init_question_prompt: >
+    Вам предлагается задать читателю 1 вопрос на русском языке, который читатель сможет полностью раскрыть и расширить в своем ответе, основываясь на понимании смысла содержания текста.
+    Задавая вопрос, вы должны следовать следующим пунктам *требований*:
+    1. добавьте необходимую справочную информацию, такую как время, место, люди и события, связанные с вопросом, и удалите вводные слова и вступления, которые не относятся к вопросу.
+    2. избегайте использования местоимений "эти", "этот", "здесь", "этот", "этот" и т. д. Преобразуйте местоимения, которые не встречаются непосредственно в вопросе, в конкретные существительные, упоминаемые в тексте содержания, обращая внимание на порядок слов.
+    3. упорядочьте вопрос, удалив слова "текст", "этот текст", "выше", "согласно тексту", Пожалуйста, упорядочьте текст, удалив такие выражения, как "текст", "этот текст", "выше", "согласно тексту", "согласно выше", "после прочтения текста" и т. д., которые зависят от внешних текстов, и убедитесь, что сам вопрос стоит отдельно, является полным и не зависит от какой-либо внешней информации или контекста. Цель - сформировать вопрос, который можно полностью понять и ответить на него без поддержки внешнего текста.
+    4. вам нужно задать только один открытый вопрос в краткой и прямой форме, избегая одного вопроса с несколькими последовательными подвопросами, а также не указывая ответы и номера вопросов.
+  init_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    При задавании вопросов можно учитывать следующие пункты *советы*:
+    1. задавайте вопросы "почему" и "как": подумайте, почему что-то произошло или как это произошло, используя описания в тексте. Такие вопросы могут привести к более глубокому анализу и объяснению, а не просто к констатации фактов.
+    2. сравнения и аналогии: если в тексте говорится об определенном явлении или идее, вы можете попытаться сравнить его с другими похожими ситуациями, а затем задать вопросы, чтобы выявить сходства и различия и возможные последствия.
+    3. прогнозирование будущего: если в тексте говорится о тенденции или направлении развития, вы можете задать вопросы, чтобы изучить возможные изменения в будущем, или сделать наблюдения и прогнозы относительно тенденции.
+    4. стимулирование мышления и обсуждения: задавайте открытые вопросы, чтобы побудить к более глубокому размышлению и обсуждению.
+  init_answer_prompt: >
+    Используйте предоставленный вам контекст текста, на основе знаний, чтобы ответить на вопрос, предоставленный ниже. Ваш ответ должен быть логически последовательным и содержательным. Вы можете использовать следующие *рекомендации*:
+    1. Понимая информацию из контекста текста, лоdгически рассуждайте о возможных деталях, уточнениях или обстоятельствах, связанных с поставленным вопросом. Анализируйте причины и влияние, пытаясь выявить дополнительные факторы.
+    2. Если вопрос касается какого-либо явления или точки зрения, сравните его с другими подобными случаями в контексте текста, обсудите их сходства и различия, а также возможные последствия.
+    3. Если вопрос касается тенденции или направления развития, используйте контекст для обсуждения возможных изменений в будущем, а также вашего мнения и прогноза относительно этой тенденции.
+    4. Кроме того, необходимо провести более глубокий анализ и обсуждение вопроса. Это может потребовать более развернутого ответа, который может стимулировать дальнейшие размышления и обмен мнениями.
+    При ответе на вопрос, вы должны соблюдать следующие *требования*:
+    1. уберите слова "текст", "этот текст", "выше" и "согласно тексту", "согласно вышеизложенному", "согласно содержанию", "после прочтения текста" и т. д., а также убедитесь, что сам ответ является самостоятельным и полным и не зависит от какой-либо внешней информации или контекста. Цель - сформировать обоснованный и полный ответ даже без опоры на внешние тексты. 
+    2. Просто и ясно дайте один логически последовательный и содержательный ответ, избегая повторяющихся фраз и лишних слов.
+  depth_question_prompt: >
+    Вам предлагается провести глубокий анализ и задать еще один вопрос на русском языке, основанный на вашем понимании содержания текста и существующего диалога. Этот вопрос должен стимулировать дальнейшее обсуждение, раскрыть более глубокие идеи и более критически проанализировать диалог.
+    Задавая вопрос, вы должны следовать следующим пунктам *требований*:
+    1. добавьте необходимую справочную информацию, такую как время, место, люди и события, связанные с вопросом, и удалите вводные слова и вступления, которые не имеют отношения к вопросу.
+    2. упорядочьте вопрос, удалив "этот текст", "выше", "согласно тексту", "согласно выше", Пожалуйста, оптимизируйте вопрос, удалив такие выражения, как "этот текст", "выше", "согласно тексту", "согласно вышесказанному", "после прочтения текста" и т. д., которые зависят от внешних текстов, и убедитесь, что вопрос является самостоятельным и полным сам по себе и не зависит от какой-либо внешней информации или контекста. Цель - сформировать вопрос, который можно полностью понять и ответить на него без поддержки внешнего текста.
+    3. Уберите слова "Вопрос, на который читатель может ответить", "Вопрос, над которым стоит задуматься", "Стоит задуматься глубже", "Дальнейшее исследование ", "более глубокий вопрос" и другие смежные поля, которые не имеют отношения к самому вопросу, просто укажите вопрос.
+    4. вам нужно предоставить только 1 открытый вопрос с более глубоким содержанием в краткой и прямой форме, избегая вопросов, содержащих несколько последовательных подвопросов, и не давая ответов с номерами вопросов. 
+  depth_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    Вот несколько *советов*, которые следует учитывать, задавая более глубокие вопросы:
+    1. Поймите контекст: внимательно прочитайте существующий диалог, чтобы убедиться, что вы глубоко понимаете контекст. Вопросы могут быть основаны на каком-то моменте или утверждении, сделанном в диалоге, или на какой-то детали диалога, и их можно задать, изучив эту информацию подробнее.
+    2. выявление скрытых сообщений: в диалоге могут быть скрытые сообщения или невысказанные идеи. Попробуйте догадаться о смысле диалога, а затем превратите скрытое послание в вопрос, который приведет к более глубокому обсуждению.
+    3. оспаривание идей: найдите в диалоге точку зрения или утверждение и задайте проблемные вопросы, чтобы побудить собеседника уточнить или пересмотреть свою точку зрения.
+    4. экстраполяция: возьмите ключевое слово или тему из диалога и распространите ее на более широкую или глубокую тему.
+    5. задавайте открытые вопросы: избегайте вопросов, требующих простых ответов, и старайтесь задавать вопросы, требующие более глубокого осмысления и обсуждения.
+    6. связь с другими областями: связывайте тему диалога с другими областями или концепциями, задавая междисциплинарные вопросы.
+    7. логическая глубина: глубоко анализируйте логику диалога и задавайте более глубокие вопросы об аргументах, предпосылках и выводах.
+  width_question_prompt: >
+    В русском языке, опираясь на предоставленный вам текст и существующий диалог, задайте вопрос, расширяющий горизонты обсуждения. Этот вопрос может рассматривать тему с более широкой точки зрения, включать в себя дополнительные фоновые знания или выводы из различных областей.
+    Задавая вопрос, вы должны следовать следующим пунктам *требований*:
+    1. добавьте необходимую справочную информацию, такую как время, место, люди и события, связанные с вопросом, и удалите вводные слова и вступления, которые не имеют отношения к вопросу.
+    2. упорядочьте вопрос, удалив слова "текст", "эта статья", "выше", "согласно тексту", Пожалуйста, оптимизируйте вопрос, удалив такие выражения, как "текст", "этот текст", "выше", "согласно тексту", "согласно выше", "после прочтения текста" и т. д., которые зависят от внешних текстов, и убедитесь, что вопрос является самостоятельным, полным и не зависит от какой-либо внешней информации или контекста. Цель - сформировать вопрос, который можно полностью понять и ответить на него без поддержки внешнего текста.
+    3. уберите из самого вопроса слова "Вопрос, на который читатель может ответить", "Вопрос для размышления", "Исследуйте дальше", "Более широкий вопрос" и т. д. Релевантные поля, не имеющие отношения к самому вопросу, такие как "Читатель может ответить на этот вопрос", "Вопрос, над которым стоит задуматься", "Исследуйте дальше", "Более широкий вопрос" и т. д., просто укажите в вопросе.
+    4. вам нужно ответить только на 1 открытый вопрос в краткой и прямой форме, избегая вопросов, содержащих несколько последовательных подвопросов, и не давая ответов с номерами вопросов.
+  width_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    Задавая вопросы, расширяющие горизонты дискуссии, можно учитывать следующие пункты *предложения*:
+    1. абстрагирование тем: абстрагирование конкретных тем или случаев в диалоге в более общие концепции или принципы. Вопросы могут быть основаны на каком-то моменте или утверждении, высказанном в диалоге, или на какой-то детали из диалога, и могут быть заданы путем дальнейшего изучения этой информации.
+    2. подведение к общей теме: найдите ключевые слова или общие черты в диалоге, а затем подведите их к более широкой общей теме. Например, если диалог посвящен конкретной технологической проблеме, вы можете задать вопросы об общих тенденциях в отрасли или технологических инновациях.
+    3. пространственные и временные рамки: рассмотрите возможность соотнесения тем диалога с различными временными или пространственными рамками. Спросите об исторических событиях, будущих тенденциях или различных регионах, чтобы расширить рамки диалога.
+    4. связь со смежными областями: свяжите темы диалога с другими смежными областями, чтобы задать более широкие вопросы.
+    5. вовлечение большего числа заинтересованных сторон: рассмотрите заинтересованные стороны, упомянутые в диалоге, а затем задайте вопрос, затрагивающий более широкий круг точек зрения и заинтересованных сторон.
+    6. глобальная перспектива: рассмотрите вопрос или тему диалога в глобальном контексте, спросите о влиянии, тенденциях или сотрудничестве на международном уровне.
+    7. человеческие и этические аспекты: поднимите вопросы о человеческих и этических аспектах темы диалога, чтобы расширить рамки диалога и способствовать более комплексному обсуждению.
+  following_answer_prompt: >
+    Используйте русский язык для ответа на предоставленный вопрос с использованием предоставленного вам текста в качестве фоновых знаний, стараясь дать максимально подробный ответ. Вы можете придерживаться следующих *рекомендаций*:
+    1. Внимательно прочитайте вопрос: убедитесь, что вы полностью понимаете каждый аспект вопроса. Иногда вопрос может иметь несколько частей, так что убедитесь, что вы учли все эти аспекты.
+    2. Найдите ключевую информацию: найдите в диалоге и документах информацию, связанную с заданным вопросом. Это может включать факты, точки зрения, данные и т. д. Убедитесь, что ваш ответ может прямо связываться с этой информацией.
+    3. Организуйте свои мысли: перед тем, как отвечать на вопрос, организуйте свои мысли. Определите структуру ответа, обеспечьте ясную логику и систематизированную информацию.
+    4. Цитируйте диалоги и документы: если возможно, процитируйте информацию из конкретных диалогов и документов в поддержку вашего ответа. Это поможет увеличить достоверность вашего ответа.
+    5. Будьте кратки: убедитесь, что ваш ответ ясен и лаконичен, не отходите от темы. Сосредоточьтесь на прямом ответе на вопрос, предоставив достаточно фоновой информации для поддержки вашей позиции.
+    6. Избегайте двусмысленности: избегайте использования неоднозначных или легко вводящих в заблуждение выражений. Убедитесь, что ваш ответ ясен и не может быть неправильно понят.
+    7. Предоставьте глубину и детали: по возможности предоставьте глубину и детали, чтобы обогатить ваш ответ. Это может быть достигнуто с помощью примеров, конкретных данных или подробного объяснения точек зрения.
+    8. Проверьте и редактируйте: перед отправкой внимательно проверьте свой ответ. Проверьте орфографию, грамматику и логические ошибки. Убедитесь, что ваш ответ полный, точный и легко понятный.
+    При ответе на вопросы вы должны следовать следующим *требованиям*:
+    1. уберите слова "текст", "этот текст", "выше" и "согласно тексту", "согласно вышеизложенному", "согласно содержанию", "после прочтения текста" и т. д., а также убедитесь, что сам ответ является самостоятельным и полным и не зависит от какой-либо внешней информации или контекста. Цель - сформировать обоснованный и полный ответ даже без опоры на внешние тексты. 
+    2. Вам достаточно предоставить один логически последовательный и полный ответ, избегая повторения вопроса или предложений.
+
+- language: fr # 和wikipedia的目录名相同，记得调用Monitor的时候设置language 为wikipedia的目录
+  language_type: '__label__fra_Latn' # 用check_language_type.py里面的语言类型
+  context_head: "Contenu du texte:" #以下几个翻译成对应语言即可，注意冒号
+  question_head: "Question:"
+  answer_head: "Réponse:"
+  dialog_head: "Dialogue:"
+  init_question_prompt: >
+    En français, après avoir compris le sens du texte de contenu, il vous est demandé de poser au lecteur une question que ce dernier pourra développer et approfondir dans sa réponse.
+    La question que vous posez doit respecter les points suivants *exigences* :
+    1. ajouter les informations de base nécessaires telles que le temps, le lieu, les personnes et les événements impliqués dans la question, et supprimer les introductions et les introductions qui ne sont pas pertinentes pour la question.
+    2. éviter l'utilisation de pronoms tels que "ces", "ceci", "ici", "ceci", "cela", etc. convertir les pronoms qui n'apparaissent pas directement dans la question en noms spécifiques mentionnés dans le texte du contenu, tout en faisant attention à la question de l'ordre des mots.
+    3. simplifier la question en supprimant les mots "texte", "ce texte", "ci-dessus", "selon le texte", Veuillez alléger le texte en supprimant les expressions telles que "texte", "ce texte", "ci-dessus", "selon le texte", "selon ce qui précède", "après avoir lu le texte", etc., qui dépendent de textes externes, et veillez à ce que la question elle-même soit autonome et complète et ne dépende d'aucune information ou d'aucun contexte externe. L'objectif est de formuler une question qui peut être entièrement comprise et à laquelle on peut répondre sans l'appui d'un texte externe.
+    4. Vous ne devez fournir qu'une seule question ouverte, de manière concise et directe, en évitant de poser une question comportant plusieurs sous-questions consécutives et en évitant de fournir des réponses et des numéros de questions.
+  init_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    Les points suivants *suggestions* peuvent être pris en compte lorsque l'on pose des questions :
+    1. poser des questions sur le pourquoi et le comment : réfléchissez au pourquoi ou au comment d'un événement décrit dans le texte. Ces questions peuvent conduire à des analyses et des explications plus approfondies plutôt qu'à un simple énoncé de faits.
+    2. comparaisons et analogies : si le texte fait référence à un phénomène ou à une idée en particulier, vous pouvez essayer de le comparer à d'autres situations similaires, puis poser des questions pour explorer les similitudes et les différences, ainsi que les implications possibles.
+    3. prédire l'avenir : si le texte fait référence à une tendance ou à une direction de développement, vous pouvez poser des questions pour explorer les changements possibles à l'avenir ou pour faire des observations et des prédictions sur une tendance.
+    4. Stimuler la réflexion et la discussion : posez des questions ouvertes pour encourager une réflexion et une discussion plus approfondies.
+  init_answer_prompt: >
+    Répondez aux questions en utilisant le contenu du texte qui vous est fourni comme contexte de connaissances, et faites en sorte que vos réponses soient aussi logiques, complètes et claires que possible. Voici quelques *suggestions*:
+    1. Vous devez comprendre les informations contenues dans le texte et faire preuve de raisonnement logique pour analyser les détails éventuellement impliqués dans les questions. Réfléchissez à la raison pour laquelle quelque chose s'est produit ou à la manière dont cela s'est produit, et essayez d'analyser davantage les causes et les conséquences sous-jacentes.
+    2. Si la question mentionne un phénomène ou une opinion particulière, vous pouvez essayer de le comparer à d'autres situations similaires dans le texte pour discuter des similitudes et des différences, ainsi que des éventuelles répercussions.
+    3. Si la question mentionne une tendance ou une direction de développement, vous pouvez utiliser le texte comme base pour discuter des changements futurs possibles ou exprimer vos opinions et prédictions concernant cette tendance.
+    4. En outre, vous devez approfondir votre réflexion et votre discussion par rapport à la question. Il peut ne pas être possible de répondre simplement avec une seule réponse, mais cela peut susciter davantage de réflexion et de discussion.
+    Lorsque vous répondez aux questions, vous devez respecter les *exigences* suivantes:
+    1.Supprimez "texte", "dans", "ci-dessus", "selon le texte", "selon ce qui précède", "selon le contenu", "après avoir lu le texte", etc, "et veillez à ce que la réponse se suffise à elle-même, sans s'appuyer sur des informations ou un contexte externes. L'objectif est de formuler une réponse raisonnable et complète, même sans l'appui de textes externes.
+    2. Fournissez simplement une réponse concise, claire et logique, sans répéter la question.
+  depth_question_prompt: >
+   En français, vous êtes invité à analyser en profondeur et à poser une question plus stimulante basée sur votre compréhension du contenu du texte et du dialogue existant. Cette question doit permettre de stimuler la discussion, de découvrir des idées plus profondes et d'analyser le dialogue de manière plus critique.
+    Lorsque vous posez une question, celle-ci doit respecter les points suivants *exigences* :
+    1. ajouter les informations de base nécessaires telles que le temps, le lieu, les personnes et les événements impliqués dans la question, et supprimer les introductions et celles qui ne sont pas pertinentes pour la question.
+    2. simplifier la question en supprimant "ce texte", "ci-dessus", "selon le texte", "selon ce qui précède", Veuillez simplifier la question en supprimant les expressions telles que "ce texte", "ci-dessus", "selon le texte", "selon ce qui précède", "après avoir lu le texte", etc., qui dépendent de textes externes, et veillez à ce que la question soit autonome et complète en elle-même et ne dépende pas d'informations ou de contextes externes. L'objectif est de formuler une question qui peut être entièrement comprise et à laquelle on peut répondre sans l'appui d'un texte externe.
+    3. supprimer les mots "Une question à laquelle le lecteur peut répondre est", "Une question à laquelle il faut réfléchir est", "Cela vaut la peine d'y réfléchir en profondeur", "Une exploration plus approfondie ", " une question plus approfondie " et autres champs connexes qui n'ont rien à voir avec la question elle-même, donnez simplement la question.
+    4. Vous ne devez fournir qu'une seule question ouverte plus approfondie, de manière concise et directe, en évitant de poser une question contenant plusieurs sous-questions consécutives et en évitant de fournir des réponses avec des numéros de questions.
+  depth_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    Voici quelques *suggestions* à prendre en compte lorsque vous posez des questions plus approfondies :
+    1. comprendre le contexte : lisez attentivement le dialogue existant pour vous assurer que vous comprenez bien le contexte. Les questions peuvent être basées sur un point ou une affirmation du dialogue, ou sur un détail du dialogue, et peuvent être posées en explorant ces informations de manière plus approfondie.
+    2. découvrir les messages cachés : le dialogue peut contenir des messages cachés ou des idées non exprimées. Essayez de déduire le sens du dialogue, puis transformez le message caché en une question qui mènera à une discussion plus approfondie.
+    3. contester les idées : trouver un point ou une affirmation dans le dialogue et poser des questions stimulantes pour encourager l'autre personne à développer ou à reconsidérer son point de vue.
+    4. extrapoler : prendre un mot clé ou un thème du dialogue et l'étendre à un sujet plus large ou plus profond.
+    5. Poser des questions ouvertes : éviter de poser des questions qui appellent des réponses simples et essayer de poser des questions qui demandent plus de réflexion et de discussion.
+    6. Relier à d'autres domaines : Relier le sujet du dialogue à d'autres domaines ou concepts, en posant des questions interdisciplinaires.
+    7. profondeur logique : analyser la logique du dialogue en profondeur et poser des questions plus approfondies sur les arguments, les prémisses ou les conclusions.
+  width_question_prompt: >
+    En français, appuyez-vous sur le texte de contenu qui vous est fourni et sur le dialogue qui existe déjà en posant une question qui élargit l'horizon de la discussion. Cette question peut explorer le sujet d'un point de vue plus large, faire référence à des connaissances plus générales ou à des points de vue issus de différents domaines.
+    Lorsque vous posez une question, celle-ci doit respecter les points suivants *exigences* :
+    1. ajouter les informations de base nécessaires telles que le temps, le lieu, les personnes et les événements impliqués dans la question, et supprimer les introductions et celles qui ne sont pas pertinentes pour la question.
+    2. simplifier la question en supprimant les mots "texte", "cet article", "ci-dessus", "selon le texte", Veuillez simplifier la question en supprimant les expressions telles que "texte", "ce texte", "ci-dessus", "selon le texte", "selon ce qui précède", "après avoir lu le texte", etc., qui dépendent de textes externes, et veillez à ce que la question soit autonome et complète et ne dépende d'aucune information ou d'aucun contexte externe. L'objectif est de formuler une question qui peut être entièrement comprise et à laquelle on peut répondre sans l'appui d'un texte externe.
+    3. supprimer de la question elle-même les mots "Une question à laquelle le lecteur peut répondre est", "Une question à méditer est", "Explorer plus avant", "Une question plus large", etc. Les champs pertinents qui n'ont rien à voir avec la question elle-même, tels que "Le lecteur peut répondre à la question est", "La question à laquelle réfléchir est", "Explorer plus avant", "Une question plus large", etc.
+    4. Vous ne devez répondre qu'à une seule question ouverte ou diffuse, de manière concise et directe, en évitant de poser une question contenant plusieurs sous-questions consécutives et en évitant de fournir des réponses avec des numéros de questions.
+  width_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    Les points suivants *suggestions* peuvent être pris en compte pour poser des questions qui élargissent l'horizon de la discussion :
+    1. abstraction des thèmes : abstraire des thèmes ou des cas spécifiques du dialogue en concepts ou principes plus généraux. Les questions peuvent être basées sur un point ou une affirmation du dialogue, ou sur un détail du dialogue, et peuvent être posées en explorant ces informations de manière plus approfondie.
+    2. conduire au sujet général : recherchez des mots clés ou des points communs dans le dialogue, puis conduisez-les à un sujet général plus large. Par exemple, si le dialogue porte sur un problème technologique spécifique, vous pouvez poser des questions sur les tendances générales de l'industrie ou les innovations technologiques.
+    3. les échelles spatiales et temporelles : envisagez de relier les thèmes du dialogue à différents cadres temporels ou spatiaux. Posez des questions sur les développements historiques, les tendances futures ou les différentes régions afin d'élargir la portée du dialogue.
+    4. relier des domaines connexes : lier les thèmes du dialogue à d'autres domaines connexes afin de poser des questions plus larges
+    5. Impliquer davantage de parties prenantes : prenez en considération les parties prenantes mentionnées dans le dialogue, puis posez une question qui implique un plus large éventail de perspectives et de parties prenantes.
+    6. une perspective mondiale : envisagez la question ou le thème du dialogue dans un contexte mondial, en posant des questions sur les impacts, les tendances ou la coopération au niveau international.
+    7. dimensions humaines et éthiques : soulever des questions sur les dimensions humaines et éthiques du thème du dialogue afin d'élargir la portée du dialogue et de promouvoir une discussion plus intégrée.
+  following_answer_prompt: >
+    Pour fournir une réponse détaillée en fonction du contenu textuel fourni en guise de contexte pour la question, voici quelques *suggestions* :
+    1. Lire attentivement la question : Assurez-vous de bien comprendre chaque aspect de la question. Parfois, une question peut comporter plusieurs parties, veillez à avoir pris en compte tous ces aspects.
+    2. Rechercher des informations clés : Recherchez dans les dialogues et les documents existants les informations clés liées à la question. Cela peut inclure des faits, des points de vue, des données, etc. Assurez-vous que votre réponse est directement liée à ces informations.
+    3. Organiser vos idées : Avant de répondre à la question, organisez vos idées. Déterminez la structure de votre réponse, assurez-vous que la logique est claire et que les informations sont bien organisées.
+    4. Citer des documents et des dialogues : Si possible, citez des informations spécifiques provenant de dialogues et de documents pour étayer votre réponse. Cela contribue à renforcer la crédibilité de votre réponse.
+    5. Soyez concis : Assurez-vous que votre réponse est concise et ne s'éloigne pas trop du sujet. Concentrez-vous sur une réponse directe à la question tout en fournissant suffisamment d'informations contextuelles pour soutenir votre point de vue.
+    6. Évitez les ambiguïtés : Évitez d'utiliser des expressions vagues ou susceptibles d'être mal interprétées dans votre réponse. Assurez-vous que votre réponse est claire et compréhensible.
+    7. Fournir en profondeur et en détail : Essayez de fournir autant de profondeur et de détails que possible pour enrichir votre réponse. Cela peut se faire en donnant des exemples, en citant des données spécifiques ou en expliquant en détail des points de vue.
+    8. Révision et édition : Avant de soumettre votre réponse, relisez-la attentivement. Vérifiez l'orthographe, la grammaire et les erreurs logiques. Assurez-vous que votre réponse est complète, précise et facile à comprendre.
+    Lorsque vous répondez à la question, veuillez respecter les *exigences* suivantes :
+    1. Supprimez "texte", "dans", "ci-dessus", "selon le texte", "selon ce qui précède", "selon le contenu", "après avoir lu le texte", etc, "et veillez à ce que la réponse se suffise à elle-même, sans s'appuyer sur des informations ou un contexte externes. L'objectif est de formuler une réponse raisonnable et complète, même sans l'appui de textes externes.
+    2. Fournissez simplement une réponse logique, complète et concise sans répéter la question.
+
+- language: ja
+  language_type: '__label__jpn_Jpan'
+  context_head: "本文："
+  question_head: "質問だ："
+  answer_head: "答えてくれ："
+  dialog_head: "対話："
+  init_question_prompt: >
+    日本語では、内容文の意味を理解した上で、読者に1つの質問を投げかけ、読者が十分に拡大解釈して答えられるようにする。
+    あなたが出す質問は以下の*要件*に従わなければならない：
+    1.時間、場所、質問に関係する人物や出来事など必要な背景情報を加え、質問と関係のない導入や紹介は削除する。
+    2.「これら」「これ」「ここ」「これ」などの代名詞の使用を避け、設問に直接出てこない代名詞は、内容文中に出てくる具体的な名詞に変換する。
+    3.質問を簡潔にし、「文本」、「本文」、「上文」、「文本に基づいて」、「上文に基づいて」、「文本を読んだ後」など、外部テキストに依存する表現を取り除き、質問自体が独立して完全で、外部情報や文脈に依存しないものにしてください。
+    4.簡潔で直接的な開放型の質問を1つだけ提供し、複数の連続する小質問を含まないようにし、質問と回答番号を提供しないでください。
+  init_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    以下の点を参考にしてください*提案*：
+    1.「なぜ」や「どのように」の質問を提出する：文中の記述を通じて、なぜある事が起こったのか、またはどのようにして起こったのかを考えてみてください。このような質問は、回答者に単なる事実の陳述ではなく、より深い分析や説明を促すことができます。
+    2.比較と類似：もし文中で特定の現象や見解について言及されている場合、それを他の類似の状況と比較し、それらの違いや類似点、および可能な影響について質問を提起してみてください。
+    3.未来の発展を予測する：文中であるトレンドや発展方向に言及されている場合、未来に何が起こり得るか、または特定のトレンドに対する見解や予測について質問を提起してみてください。
+    4.思考と討論を引き出す：開放型の質問を提出し、回答者により深い思考と討論を促します。
+  init_answer_prompt: >
+    日本語で出題される問題には、提供された内容のテキストを背景として知識を深め、できるだけ論理的で完成度の高い解答をしてください。以下の点を参考にしてください*提案*：
+    1.本文の内容を理解し、設問に関係すると思われる内容を論理的に推論し、なぜそのようなことが起こったのか、どのように起こったのかを考え、その背景となる理由や影響をより深く分析する。
+    2.設問が特定の現象や考え方に言及している場合は、内容文中の他の似たような状況と比較して、類似点や相違点、考えられる意味を探ってみる。
+    3.設問が傾向や発展の方向について言及している場合は、本文を利用して、将来起こりうる変化や、傾向に関する意見や予測を探ることができます。
+    4.さらに、設問をより深く考え、議論する必要があります。単純な回答では対応しにくいかもしれませんが、より多くの考えや交流を誘発することができます
+    設問に回答する際には、以下の*要件*に従わなければなりません： 
+    1.「文本」、「本文」、「上文」、「文本に基づいて」、「上文に基づいて」、「内容に基づいて」、「文本を読んだ後」など、外部テキストに依存する表現を削除し、回答自体が独立して完全で、外部情報や文脈に依存しないようにしてください。目標は、外部のテキストのサポートがなくても十分に理にかない、完全な回答を形成することです。
+    2.質問や繰り返しの記述を避け、簡潔かつ直接的で、明確、論理的、かつ完全な回答をすること。
+  depth_question_prompt: >
+    理解した内容と既にある対話の基づき、さらに深く思索を促す質問を1つ提案してください。この質問は、更に深い洞察を掘り下げ、対話内容をより批判的に分析することを目的とするものです。
+    質問を提出する際、以下の*要件*に従ってください。
+    1.質問には、時間、場所、関係する人物と事件などの必要な背景情報を追加し、質問に関係ない紹介や導入を削除してください。
+    2.「本文」、「上文」、「文本に基づいて」、「上文に基づいて」、「文本を読んだ後」など、外部テキストに依存する表現を削除し、質問自体が独立して完全で、外部情報や文脈に依存しないものにしてください。
+    3.「読者が答えることができる質問は」、「考えるべき問題は」、「深く考える価値がある」、「さらに探求する」、「より深い質問」など、問題文自体に関係ない表現を削除し、直接質問を提示してください。
+    4.1つの開放型でより深い質問のみを簡潔に直接提供してください。質問が複数の連続する小問題を含まないようにし、回答や問題番号の提供を避けてください。
+  depth_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    以下は、より深い質問をする際に考慮すべきいくつかの*提案*である：
+    1.文脈を理解する：既存の対話を注意深く読み、文脈を深く理解する。 質問は、対話の中で指摘された点や主張、あるいは対話の細部に基づくことができ、その情報をさらに探ることで提起することができる。
+    2.隠されたメッセージの発見: 対話の中には隠されたメッセージや明言されていない考え方があるかもしれません。 対話の背後にある意味を推測し、隠されたメッセージを質問に変えて、より深い議論につなげましょう。
+    3.アイデアに挑戦する: 対話の中からポイントや主張を見つけ、挑戦的な質問を投げかけて、相手に詳しく説明したり、自分の見解を再考するよう促します。
+    4.外挿: 対話の中からキーワードやテーマを取り出し、より広い、あるいは深いトピックへと広げていく。
+    5.オープンエンドな質問をする：単純な答えを求める質問は避け、より深く考え、議論する必要のある質問をするようにする。
+    6.他の領域との関連：対話のテーマを他の領域や概念と関連付け、学際的な質問をする。
+    7.論理的な深さ: 対話の論理を深く分析し、議論や前提、結論について深く質問する。
+  width_question_prompt: >
+    日本語では、提供された内容のテキストと、すでに存在する対話を基に、議論の視野を広げるような質問をします。 この質問は、より広い視野からトピックを探求し、より多くの背景知識や異なる分野からの洞察に関連づけることができます。
+    質問をする場合、あなたが出す質問は以下の*要件*に従わなければならない：
+    1.時間、場所、質問に関係する人物や出来事など、必要な背景情報を追加し、質問に関係のない紹介文や自己紹介を削除する 
+    2.設問中の「本文によると」など、設問そのものとは関係のない関連項目を削除し、本文がなくても妥当で完全な設問となるようにする。
+    3.回答や質問番号の記載を避け、簡潔かつ直接的な表現で、自由形式のより個別的な質問を提供すればよい。
+  width_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    議論の視野を広げるために質問を投げかける際には、以下のような*提案*を用いることができる：
+    1.テーマの抽象化：ダイアログの特定のテーマや例を、より一般的な概念や原則に抽象化する。 質問は、ダイアログで提示されたアイデアや議論に基づいてもよいし、ダイアログで提示された内容をさらに掘り下げていくことで浮かび上がってくる内容に基づいてもよい。
+    2.全体的なトピックを引き出す: 対話の中から、より広い全体的なトピックにつながるキーワードや共通点を探す。 例えば、対話の内容が特定のテクノロジーに関するものであれば、業界全体のトレンドやイノベーションについて質問することができる。
+    3.空間的・時間的スパン: 対話のトピックを、さまざまな空間的・時間的枠組みに関連づけることを検討する。 歴史的な発展や将来のトレンド、さまざまな地域について質問し、対話の幅を広げましょう。
+    4.関連分野とのリンク：対話のテーマを他の関連分野とリンクさせ、より広範な問題を提起する。
+    5.より幅広いステークホルダーを巻き込む：ダイアログで言及されたステークホルダーを考慮した上で、より幅広い視点やステークホルダーを巻き込む質問をする。
+    6.グローバルな視点：ダイアログの課題やテーマをグローバルな文脈で考え、国際レベルでの影響、傾向、協力について質問する。
+    7.人間的・倫理的側面への対応：対話の幅を広げ、より包括的な議論ができるよう、対話のテーマの人間的・倫理的側面について質問を投げかける。
+  following_answer_prompt: >
+    日本語で出題される問題に対して、与えられた内容文を背景として知識を深め、できるだけ詳しく解答してください。以下の点を参考にしてください*提案*： 
+    1.設問には複数のパートがあることもあるので、すべての面を考慮すること。
+    2.重要な情報を探す：既存の対話や文書から、問題に関連する重要な情報を探す。これには事実、意見、データなどが含まれます。自分の答えが、これらの情報と直接リンクしていることを確認する。
+    3.考えを整理する：質問に答える前に考えを整理しましょう。解答の構成を決め、論理が明確で情報が整理されていることを確認する。
+    4.文書やダイアログを引用する：可能であれば、具体的なダイアログや文書からの情報を引用し、答えをサポートしましょう。そうすることで、あなたの回答に信頼性が加わります。
+    5.簡潔であること：解答は簡潔で、トピックから離れすぎないようにしましょう。質問に直接答えることに重点を置きつつ、自分の立場を裏付けるのに十分な背景情報を提供しましょう。
+    6.あいまいさを避ける: あいまいであいまいな表現は避けましょう。誤解されにくい明確な回答を心がけましょう。
+    7.深みと詳細を提供する: 回答を具体化するために、できるだけ深みと詳細を提供しましょう。例を挙げる、具体的なデータを引用する、ポイントを詳しく説明するなどです。
+    8.見直しと編集:提出する前に回答を注意深く見直しましょう。スペルミス、文法的なミス、論理的なミスがないか確認しましょう。回答が完全で、正確で、理解しやすいものであることを確認する。
+    設問に回答する際には、以下の*要件*に従わなければなりません： 
+    1.「文本」、「本文」、「上文」、「文本に基づいて」、「上文に基づいて」、「内容に基づいて」、「文本を読んだ後」など、外部テキストに依存する表現を削除し、回答自体が独立して完全で、外部情報や文脈に依存しないようにしてください。目標は、外部のテキストのサポートがなくても十分に理にかない、完全な回答を形成することです。
+    2.質問や繰り返しの記述を避け、簡潔かつ直接的で、明確、論理的、かつ完全な回答をすること。
