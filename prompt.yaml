@@ -18,7 +18,7 @@
     3.预测未来发展: 如果文本提到了某个趋势或者发展方向，你可以提出问题来探讨未来可能会发生的变化，或者是对某个趋势的看法和预测。
     4.引发思考和讨论: 提出开放性问题，鼓励回答者展开更深入的思考和讨论。
   init_answer_prompt: >
-    请你用汉语以提供给你的内容文本作为知识背景，回答所提供的问题，并使回答尽可能逻辑清晰，内容完整。可以参考以下几点*建议*：
+    请你用汉语将提供给你的内容文本作为知识背景，回答所提供的问题，并使回答尽可能逻辑清晰，内容完整。可以参考以下几点*建议*：
     1.你需要理解内容文本的信息，对问题中可能涉及的细节进行逻辑推理，思考为什么某件事情会发生，或者是如何发生的，尝试分析更多背后的原因和影响。
     2.如果问题提到了某个现象或者观点，你可以尝试将其与内容文中其他类似的情况进行对比，来探讨它们之间的异同以及可能的影响。
     3.如果问题提到了某个趋势或者发展方向，你可以结合文本来探讨未来可能会发生的变化，或者是对某个趋势的看法和预测。
@@ -59,7 +59,7 @@
     6.全球化视角： 将对话中的问题或主题放在全球范围内考虑，问及国际层面的影响、趋势或合作。
     7.涉及人文和伦理层面： 提出关于对话主题的人文和伦理层面的问题，以扩大对话的范围并促使更加综合的讨论。
   following_answer_prompt: >
-    用汉语以提供给你的内容文本作为知识背景回答所提供的问题，并使回答尽可能详细。可以参考以下几点*建议*：
+    用汉语将提供给你的内容文本作为知识背景回答所提供的问题，并使回答尽可能详细。可以参考以下几点*建议*：
     1.仔细阅读问题： 确保你完全理解问题的每个方面。有时问题可能有多个部分，确保你已经考虑到所有这些方面。
     2.查找关键信息： 在已有的对话和文档中查找与问题相关的关键信息。这可能包括事实、观点、数据等。确保你的回答能够直接与这些信息联系起来。
     3.整理思路： 在回答问题之前，先整理一下你的思路。确定回答的结构，确保逻辑清晰，信息有条理。
@@ -292,3 +292,78 @@
     設問に回答する際には、以下の*要件*に従わなければなりません： 
     1.「文本」、「本文」、「上文」、「文本に基づいて」、「上文に基づいて」、「内容に基づいて」、「文本を読んだ後」など、外部テキストに依存する表現を削除し、回答自体が独立して完全で、外部情報や文脈に依存しないようにしてください。目標は、外部のテキストのサポートがなくても十分に理にかない、完全な回答を形成することです。
     2.質問や繰り返しの記述を避け、簡潔かつ直接的で、明確、論理的、かつ完全な回答をすること。
+
+- language: es # 和wikipedia的目录名相同，记得调用Monitor的时候设置language 为wikipedia的目录
+  language_type: '__label__spa_Latn' # 用utils.py 中的check_language_type函数输出的语言类型
+  context_head: "Contenido del texto：" #以下几个翻译成对应语言即可，注意冒号
+  question_head: "Pregunta："
+  answer_head: "Respuestas："
+  dialog_head: "Diálogo："
+  init_question_prompt: > #chatgpt翻译的时候可能没有 * ，注意加上
+    En español, una vez comprendido el significado del texto de contenido, se le pide que formule al lector 1 pregunta que el lector puede ampliar y extender completamente en su respuesta.
+    Al formular la pregunta, la pregunta que hagas debe seguir los siguientes *requisitos
+    1. Añade la información de fondo necesaria, como el tiempo, el lugar y las personas y acontecimientos implicados en la pregunta, y suprime las introducciones y las introducciones que no sean relevantes para la pregunta.
+    2. Evite el uso de pronombres como "estos", "esta", "aquí", "este", "esta", etc. Convierta los pronombres que no aparezcan directamente en la pregunta en sustantivos específicos mencionados en el texto de contenido, prestando atención a la cuestión del orden de las palabras.
+    3. Racionalice la pregunta eliminando las palabras "texto", "este texto", "arriba", "según el texto", Por favor, racionalice el texto eliminando expresiones como "texto", "este texto", "arriba", "según el texto", "según lo anterior", "después de leer el texto", etc., que dependen de textos externos, y asegúrese de que la pregunta en sí es completa y no depende de ninguna información o contexto externos. El objetivo es formular una pregunta que pueda entenderse y responderse completamente sin el apoyo de un texto externo.
+    4. Sólo tiene que formular una pregunta abierta de forma concisa y directa, evitando una pregunta con varias subpreguntas consecutivas, y evite dar respuestas y números de pregunta.
+  init_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    Los siguientes puntos *sugerencias* pueden tenerse en cuenta a la hora de formular preguntas:
+    1. Formular preguntas de por qué y cómo: pensar por qué ocurrió algo o cómo ocurrió a través de las descripciones del texto. Este tipo de preguntas pueden dar lugar a análisis y explicaciones más profundos en lugar de limitarse a enunciar hechos.
+    2. Comparaciones y analogías: Si el texto se refiere a un fenómeno o idea concretos, puedes intentar compararlo con otras situaciones similares y, a continuación, formular preguntas para explorar las semejanzas y diferencias y las posibles implicaciones.
+    3. Predecir el futuro: si el texto se refiere a una tendencia o dirección de desarrollo, puedes hacer preguntas para explorar posibles cambios en el futuro, o hacer observaciones y predicciones sobre una tendencia.
+    4. Estimular la reflexión y el debate: formula preguntas abiertas para fomentar una reflexión y un debate más profundos.
+  init_answer_prompt: >
+    Por favor, utilice el texto de contenido que se le proporcionará como base de conocimiento en español para responder a las preguntas proporcionadas y haga las respuestas tan lógicas y completas como sea posible. Puedes consultar los siguientes puntos *sugerencias*:
+    1. debes comprender la información del texto de contenido, razonar lógicamente sobre los detalles que pueden estar implicados en la pregunta, pensar por qué sucede algo o cómo sucede, tratar de analizar más sobre las razones y efectos que hay detrás.
+    2. Si la pregunta se refiere a un fenómeno o idea en particular, puedes intentar compararlo con otras situaciones similares en el texto de contenido para explorar similitudes y diferencias y posibles implicaciones.
+    3. Si la pregunta se refiere a una tendencia o dirección de desarrollo, puedes utilizar el texto para explorar posibles cambios en el futuro, u opiniones y predicciones sobre una tendencia.
+    4. Además, tendrás que pensar y debatir la pregunta con mayor profundidad. Puede que no sea fácil responder con respuestas sencillas, pero puede provocar más reflexión y comunicación.
+    Al responder a las preguntas, debes seguir estos *requisitos*:
+    1. Elimine "texto", "este artículo", "arriba", "según el texto", 2. Elimine expresiones que dependan de textos externos como "según lo anterior", "según el contenido", "después de leer el texto", etc., y asegúrese de que la respuesta se sostiene por sí misma sin depender de ninguna información o contexto externos. El objetivo es desarrollar una respuesta que tenga sentido y esté completa sin el apoyo de texto externo.
+    2. Sólo tienes que dar una respuesta clara, lógica y completa, que sea concisa y directa, evitando preguntas y afirmaciones repetitivas.
+  depth_question_prompt: >
+    En español, se le invita a analizar en profundidad y formular 1 pregunta más que invite a la reflexión, basada en su comprensión del contenido del texto y del diálogo existente. Esta pregunta debe estimular un debate más profundo, descubrir puntos de vista más profundos y analizar el diálogo de forma más crítica.
+    Cuando formules una pregunta, ésta debe seguir los siguientes *requisitos
+    1. Añade la información de fondo necesaria, como el tiempo, el lugar y las personas y acontecimientos implicados en la pregunta, y elimina las introducciones y las introducciones que no sean relevantes para la pregunta.
+    2. Racionalice la pregunta eliminando "este texto", "arriba", "según el texto", "según lo anterior", Por favor, racionalice la pregunta eliminando expresiones como "este texto", "arriba", "según el texto", "según lo anterior", "después de leer el texto", etc., que dependen de textos externos, y asegúrese de que la pregunta se sostiene por sí sola y es completa en sí misma y no depende de ninguna información o contexto externos. El objetivo es formar una pregunta que pueda entenderse y responderse completamente sin el apoyo de un texto externo.
+    3. Elimine las palabras "Una pregunta que el lector puede responder es", "Una pregunta sobre la que reflexionar es", "Merece la pena reflexionar en profundidad", "Una exploración más profunda ", "una pregunta más profunda" y otros campos relacionados que no tienen nada que ver con la pregunta en sí, limítese a dar la pregunta.
+    4. Sólo tiene que proporcionar una pregunta abierta más profunda de forma concisa y directa, evitando una pregunta que contenga varias subpreguntas consecutivas y evitando dar respuestas con números de pregunta.
+  depth_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    He aquí algunas *sugerencias* a tener en cuenta a la hora de formular preguntas más profundas:
+    1. Comprender el contexto: Lee detenidamente el diálogo existente para asegurarte de que comprendes a fondo el contexto. Las preguntas pueden basarse en un punto o afirmación del diálogo, o en un detalle del mismo, y pueden plantearse explorando más a fondo esta información.
+    2. Descubrir mensajes ocultos: Puede haber mensajes ocultos o ideas no expresadas en el diálogo. Intenta deducir el significado del diálogo y, a continuación, convierte el mensaje oculto en una pregunta que dé lugar a un debate más profundo.
+    3. Cuestiona las ideas: Busca un punto o una afirmación en el diálogo y formula preguntas que cuestionen lo dicho para animar a la otra persona a que elabore o reconsidere su punto de vista.
+    4. Extrapolar: Toma una palabra clave o un tema del diálogo y extiéndelo a un tema más amplio o profundo.
+    5. Haga preguntas abiertas: Evite hacer preguntas que requieran respuestas sencillas e intente hacer preguntas que requieran más reflexión y debate.
+    6. Relaciónelo con otros ámbitos: relacione el tema del diálogo con otros ámbitos o conceptos, formulando preguntas interdisciplinares.
+    7. Profundidad lógica: Analiza en profundidad la lógica del diálogo y formula preguntas más profundas sobre argumentos, premisas o conclusiones.
+  width_question_prompt: >
+    En español, aproveche el texto de contenido que se le ha proporcionado y el diálogo que ya existe formulando 1 pregunta que amplíe el horizonte de la discusión. Esta pregunta puede explorar el tema desde una perspectiva más amplia, correlacionando más conocimientos previos o percepciones de diferentes áreas.
+    Al formular una pregunta, ésta debe seguir los siguientes *requisitos
+    1. Añade la información de fondo necesaria, como el tiempo, el lugar y las personas y acontecimientos implicados en la pregunta, y elimina las introducciones y las introducciones que no sean relevantes para la pregunta.
+    2. Racionalice la pregunta eliminando las palabras "texto", "este artículo", "arriba", "según el texto", Por favor, racionalice la pregunta eliminando expresiones como "texto", "este texto", "arriba", "según el texto", "según lo anterior", "después de leer el texto", etc., que dependen de textos externos, y asegúrese de que la pregunta se sostiene por sí sola y es completa y no depende de ninguna información o contexto externos. El objetivo es formar una pregunta que pueda entenderse y responderse completamente sin el apoyo de un texto externo.
+    3. Elimine de la pregunta las palabras "Una pregunta que el lector puede responder es", "Una pregunta para reflexionar es", "Explore más", "Una pregunta más amplia", etc. Los campos relevantes que no tengan nada que ver con la pregunta en sí, como "El lector puede responder a la pregunta es", "La pregunta sobre la que reflexionar es", "Explore más a fondo", "Una pregunta más amplia", etc., basta con dar la pregunta.
+    4. Sólo tienes que dar 1 pregunta abierta más difusa de forma concisa y directa, evitando una pregunta que contenga varias subpreguntas consecutivas y evitando dar respuestas con números de pregunta.
+  width_question_advice: > #chatgpt翻译的时候可能没有 * ，注意加上
+    Los siguientes puntos *sugerencias* pueden tenerse en cuenta a la hora de plantear preguntas que amplíen el horizonte del debate:
+    1. Abstracción de temas: Abstraer temas o casos concretos del diálogo en conceptos o principios más generales. Las preguntas pueden basarse en un punto o afirmación del diálogo, o en un detalle del diálogo, y pueden plantearse explorando más a fondo esta información.
+    2. Llevar al tema general: Busque palabras clave o puntos en común en el diálogo y, a continuación, llévelos a un tema general más amplio. Por ejemplo, si el diálogo gira en torno a un tema tecnológico concreto, puede plantear preguntas sobre las tendencias generales del sector o las innovaciones tecnológicas.
+    3. Espacios espaciales y temporales: Considere la posibilidad de relacionar los temas del diálogo con diferentes marcos temporales o espaciales. Pregunte por la evolución histórica, las tendencias futuras o las distintas regiones para ampliar el alcance del diálogo.
+    4. Vincular áreas relacionadas: Vincule los temas del diálogo a otras áreas relacionadas para plantear preguntas más amplias.
+    5. Implicar a más partes interesadas: Considere las partes interesadas mencionadas en el diálogo y, a continuación, formule una pregunta que implique a una gama más amplia de perspectivas y partes interesadas.
+    6. Perspectiva global: considere la cuestión o el tema del diálogo en un contexto global, preguntando por las repercusiones, las tendencias o la cooperación a nivel internacional.
+    7. Dimensiones humanas y éticas: Plantee preguntas sobre las dimensiones humanas y éticas del tema del diálogo para ampliar el alcance del diálogo y promover un debate más integrado.
+  following_answer_prompt: >
+    Contesta a las preguntas que se te plantean en español utilizando como contexto de conocimiento el texto de contenido que se te proporciona y haz las respuestas lo más detalladas posible. Puedes consultar los siguientes puntos *sugerencias*:
+    1. Lea atentamente la pregunta: Asegúrese de que comprende perfectamente cada aspecto de la pregunta. A veces la pregunta puede tener más de una parte, asegúrate de haberlas considerado todas.
+    2. Busca información clave: Busca información clave relacionada con el problema en el diálogo y los documentos existentes. Esto puede incluir hechos, opiniones, datos, etc. Asegúrate de que tu respuesta se relaciona directamente con ellos. Asegúrate de que tu respuesta puede relacionarse directamente con esta información.
+    3. Organiza tus ideas: Organiza tus ideas antes de responder a la pregunta. Determina la estructura de tu respuesta y asegúrate de que la lógica es clara y la información está organizada.
+    4. Cite documentos y diálogos: si es posible, cite diálogos específicos e información de documentos para apoyar su respuesta. Esto contribuirá a dar credibilidad a tu respuesta.
+    5. Sé conciso: asegúrate de que tu respuesta es concisa y no se aleja demasiado del tema. Céntrate en responder directamente a la pregunta y proporciona al mismo tiempo suficiente información de fondo para respaldar tu postura.
+    6. Evita la ambigüedad: Evita expresiones vagas o ambiguas en tu respuesta. Asegúrate de que tus respuestas sean claras y no se malinterpreten fácilmente.
+    7. Aporte profundidad y detalle: Proporcione tanta profundidad y detalle como sea posible para dar cuerpo a su respuesta. Esto puede hacerse dando ejemplos, citando datos concretos o explicando puntos en detalle.
+    8. Revisa y corrige: revisa cuidadosamente tu respuesta antes de enviarla. Compruebe que no haya errores ortográficos, gramaticales ni lógicos. Asegúrese de que las respuestas sean completas, precisas y fáciles de entender.
+    Al responder a las preguntas, debe seguir estos puntos *requisitos*:
+    1. Elimine "texto", "este artículo", "anterior", "basado en texto", 2. Elimine expresiones que dependan de textos externos como "según lo anterior", "según el contenido", "después de leer el texto", etc., y asegúrese de que la respuesta se sostiene por sí misma sin depender de ninguna información o contexto externos. El objetivo es desarrollar una respuesta que tenga sentido y esté completa sin el apoyo de texto externo.
+    2. Sólo tienes que dar una respuesta clara, lógica y completa, que sea concisa y directa, evitando preguntas y afirmaciones repetitivas.
+
