@@ -72,10 +72,10 @@ class QuestionGenerator:
     
     def create_problem_prompt(self, data_content):
         data_content = quoter(data_content)
-        prompt = self.prompt_config['init_question_prompt']
+        prompt = self.prompt_config['init_question_prompt'] #从对象的 prompt_config 属性中取出 init_question_prompt 键对应的值，赋值给 prompt。
         prompt = prompt.replace(' ', '')
         return  [prompt + "\n",\
-                self.prompt_config["context_head"] + quoter(data_content) + "\n" + \
+                self.prompt_config["init_question_advice"] + "\n" + self.prompt_config["context_head"] + quoter(data_content) + "\n" + \
                 self.prompt_config["question_head"]]
 
     def split_text(self, text):
@@ -112,6 +112,7 @@ class QuestionGenerator:
             title = doc.attrib['title']
             txt = doc.text
             if self.language == 'zh':
+                #print(len(txt))
                 txt = convert_to_simple_chinese(txt)
             if check_doc(txt, self.max_len, self.min_len, language_type=self.prompt_config['language_type']) == False: 
                 continue
@@ -135,11 +136,14 @@ class QuestionGenerator:
                     result = future.result()
                     result = result.split('\n')
                     result = [r for r in result if len(r) != 0]
-                    if self.language == 'zh':
+                    # Check if result is not empty and language is 'zh' before converting
+                    if len(result) > 0 and self.language == 'zh': 
+                        #print(result[0])
                         result = [convert_to_simple_chinese(result[0])]
                     questions.append(copy.deepcopy(result))
                 except RetryError:
                     questions.append([])
+
 
             data_json = {
                 'id': id,

@@ -62,6 +62,7 @@ class DialogGenerator:
         prompt = self.prompt_config['depth_question_prompt']
         prompt = prompt.replace(" ", "")
         return  [prompt, \
+                self.prompt_config["depth_question_advice"] + "\n" + \
                 self.prompt_config["context_head"] + context + "\n" + \
                 self.prompt_config["dialog_head"] + dialog  + "\n" + \
                 self.prompt_config["question_head"]]
@@ -72,6 +73,7 @@ class DialogGenerator:
         prompt = self.prompt_config['width_question_prompt']
         prompt = prompt.replace(" ", "")
         return  [prompt,\
+                self.prompt_config["width_question_advice"] + "\n" + \
                 self.prompt_config["context_head"] + context + "\n" + \
                 self.prompt_config["dialog_head"] + dialog  + "\n" + \
                 self.prompt_config["question_head"]]
@@ -111,6 +113,7 @@ class DialogGenerator:
     def convert_dialog(self, dialog): # 从列表转换成一段话
         txt = ''
         for q, a in dialog:
+            print (q)
             txt += self.prompt_config["question_head"] + q + '\n' +\
                     self.prompt_config["answer_head"] + a + '\n'
         return txt
@@ -332,3 +335,4 @@ class DialogGenerator:
         if self.is_generate_without_doc:
             name2 = self.construct_data_path_without_txt(data_path)
             write_json(dialog_without_doc_list, name2)
+        print(f"Save {name}") 
