@@ -108,12 +108,14 @@ def check_doc(text, upper_bound=10000, lower_bound=1000, language_type = '__labe
     if txtlen < lower_bound or txtlen > upper_bound:
         return False
     t = text.replace('\n', '')
-    check_language_type_model = fasttext.load_model("./model.bin")
-    text_type = check_language_type_model.predict(t)[0][0]
+    text_type = check_language_type(t)
     if text_type != language_type:
         return False
     return True
 
+def check_language_type(text):
+    text_type = check_language_type_model.predict(text)[0][0]
+    return text_type
 
 def is_title_had_done(title, path, check_dir = None):
     if check_dir != None:
