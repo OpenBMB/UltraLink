@@ -19,7 +19,7 @@ from tenacity import (
     RetryError
 )  # for exponential backoff
 
-check_language_type_model = fasttext.load_model("/home/fuyujia/UltraLink/model.bin")
+check_language_type_model = fasttext.load_model("/home/fuyujia/data1/model.bin")
 encoding = tiktoken.encoding_for_model('gpt-3.5-turbo')
 
 parser = argparse.ArgumentParser()
@@ -36,8 +36,9 @@ parser.add_argument('--max_step_len', '-msl', type=int, default=10, help="the ma
 parser.add_argument('--end_probability', '-ep', type=float,default=0.1, help="the probability of end the dialog, this probability will be doubled when the times of dialog is extended")
 parser.add_argument("--num_workers", "-nw", type=int, default=35, help="the number of workers")
 parser.add_argument("--prompt_path", "-pp", type=str, default='./prompt.yaml', help="the config of prompt")
+parser.add_argument("--sensitive_path", "-sp", type=str, default='./sensitive_words.yml', help="the sensitive words")
 parser.add_argument("--generate_without_doc", "-gwd", type=bool, default=False, help="whether generate answer without doc, the default answer will still be generated from doc")
-parser.add_argument("--language", "-l", type=str, default='fr', help="the language of the doc")
+parser.add_argument("--language", "-l", type=str, default='zh', help="the language of the doc")
 parser.add_argument("--add_mode", "-am", type=bool, default=False, help="whether add the result to the existed file")
 
 def get_XML(data_path):
