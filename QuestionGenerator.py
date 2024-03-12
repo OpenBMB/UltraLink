@@ -31,6 +31,9 @@ class QuestionGenerator:
         
         if not os.path.exists(self.output_path):
             os.makedirs(self.output_path)
+        if not os.path.exists(self.sensitive_path):
+            with open(self.sensitive_path, 'w') as f:
+                pass  # 创建一个空文件
         
     
     def __del__(self):
@@ -58,7 +61,11 @@ class QuestionGenerator:
         """根据语言加载敏感词列表"""
         with open(file_path, 'r', encoding='utf-8') as f:
             all_sensitive_words = yaml.safe_load(f)  # 加载整个文件
-            return all_sensitive_words.get(language, [])  # 获取指定语言的敏感词，如果没有则返回空列表
+            if all_sensitive_words is None:
+                return []  # 文件为空，返回空列表
+            else:
+                return all_sensitive_words.get(language, [])  # 获取指定语言的敏感词，如果没有则返回空列表
+
 
     def is_sensitive(self, text):
         """使用正则表达式检查文本是否包含敏感词"""
