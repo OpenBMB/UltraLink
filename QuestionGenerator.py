@@ -33,7 +33,7 @@ class QuestionGenerator:
             os.makedirs(self.output_path)
         if not os.path.exists(self.sensitive_path):
             with open(self.sensitive_path, 'w') as f:
-                pass  
+                pass  #创建空文件
         
     
     def __del__(self):
