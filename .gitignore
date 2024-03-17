@@ -5,3 +5,5 @@ zip_file.py
 data/
 dialog/
 reform_data.py
+filter_words.yml
+__pycache__/

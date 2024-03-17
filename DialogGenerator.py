@@ -3,6 +3,7 @@ import copy
 import argparse
 import yaml
 import random
+import pdb
 
 from utils import write_json, quoter, get_index, get_leaf_nodes,\
     get_JSON, RequestPool, check_trunk, ProbabilityIterator, get_token_len,\
@@ -113,7 +114,6 @@ class DialogGenerator:
     def convert_dialog(self, dialog): # 从列表转换成一段话
         txt = ''
         for q, a in dialog:
-            print (q)
             txt += self.prompt_config["question_head"] + q + '\n' +\
                     self.prompt_config["answer_head"] + a + '\n'
         return txt
@@ -133,6 +133,7 @@ class DialogGenerator:
             except:
                 pass
             index = get_index(os.path.join(self.output_path, file_name))
+
         else:
             index = 0
         self.process_doc(data_path, index)
@@ -307,17 +308,19 @@ class DialogGenerator:
                 
             for f in futures:
                 result = f.result()
-                dialog['dialogs'].append(result)
-                if self.is_generate_without_doc:
-                    questions_without_txt = []
-                    for q, a in result:
-                        
-                        questions_without_txt.append(q)
-                    dialog_without_doc['dialogs'].append(self.gene_dialog_without_txt(questions_without_txt))
-            
-            dialog_list.append(dialog)
-            if self.is_generate_without_doc:
+                if result:  # Ensure non-empty results are appended
+                    dialog['dialogs'].append(result)
+                    if self.is_generate_without_doc:
+                        questions_without_txt = [q for q, _ in result]
+                        dialog_without_doc_result = self.gene_dialog_without_txt(questions_without_txt)
+                        if dialog_without_doc_result:  # Check for non-empty results before appending
+                            dialog_without_doc['dialogs'].append(dialog_without_doc_result)
+
+            if dialog['dialogs']:  # Only append if 'dialogs' is not empty
+                dialog_list.append(dialog)
+            if self.is_generate_without_doc and dialog_without_doc['dialogs']:  # Check for non-empty before appending
                 dialog_without_doc_list.append(dialog_without_doc)
+
             count += 1
             
             if self.save_interval > 0 and count >= self.save_interval:

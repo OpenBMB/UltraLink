@@ -1,5 +1,7 @@
 import copy
 import os
+import pdb
+import re
 
 import yaml
 
@@ -18,14 +20,20 @@ class QuestionGenerator:
         self.max_len = args.max_len
         self.min_len = args.min_len
         self.prompt_path = args.prompt_path
+        self.filter_path = args.filter_path if args.filter_path is not None else "default_filter_words.yml"
         self.add_mode = args.add_mode
         self.language = ""
         self.prompt_config = {}
+        self.filter_words = ""
+
         # self.entry_num = args.entry_num #TODO 调整更好的entry方式
         # self.entry_lock = threading.Lock()
         
         if not os.path.exists(self.output_path):
             os.makedirs(self.output_path)
+        if not os.path.exists(self.filter_path):
+            with open(self.filter_path, 'w') as f:
+                pass  # 创建一个空文件
         
     
     def __del__(self):
@@ -33,6 +41,7 @@ class QuestionGenerator:
         
     def set_language(self, language="zh"):
         self.language = language
+        self.filter_words = self.load_filter_words(self.filter_path, self.language)
         with open(self.prompt_path, 'r') as f:
             data = yaml.load(f, Loader=yaml.FullLoader)
             for d in data:
@@ -47,6 +56,24 @@ class QuestionGenerator:
         data_path = '/'.join(data_path) + '.jsonl'
         data_path = os.path.join(self.output_path, data_path)
         return data_path
+    
+    def load_filter_words(self, file_path, language="zh"):
+        """根据语言加载filter_word列表"""
+        with open(file_path, 'r', encoding='utf-8') as f:
+            all_filter_words = yaml.safe_load(f)  # 加载整个文件
+            if all_filter_words is None:
+                return []  # 文件为空，返回空列表
+            else:
+                return all_filter_words.get(language, [])  # 获取指定语言的filter_word，如果没有则返回空列表
+
+
+    def is_filter(self, text):
+        """使用正则表达式检查文本是否包含filter_word"""
+        #print(self.filter_words)
+        pattern = '|'.join([re.escape(word) for word in self.filter_words])
+        #print("构建的正则表达式:", pattern)
+        #print(bool(re.search(pattern, text, re.IGNORECASE)))
+        return bool(re.search(pattern, text, re.IGNORECASE))
         
     def gene_question(self, data_path):
         file_name = self.construct_data_path(data_path)
@@ -74,8 +101,10 @@ class QuestionGenerator:
         data_content = quoter(data_content)
         prompt = self.prompt_config['init_question_prompt'] #从对象的 prompt_config 属性中取出 init_question_prompt 键对应的值，赋值给 prompt。
         prompt = prompt.replace(' ', '')
+        #pdb.set_trace()  # 在这里设置断点
+
         return  [prompt + "\n",\
-                self.prompt_config["init_question_advice"] + "\n" + self.prompt_config["context_head"] + quoter(data_content) + "\n" + \
+                self.prompt_config["init_question_advice"] + "\n" + self.prompt_config["context_head"] + data_content + "\n" + \
                 self.prompt_config["question_head"]]
 
     def split_text(self, text):
@@ -114,6 +143,9 @@ class QuestionGenerator:
             if self.language == 'zh':
                 #print(len(txt))
                 txt = convert_to_simple_chinese(txt)
+            if self.is_filter(txt):
+                #pdb.set_trace()
+                continue
             if check_doc(txt, self.max_len, self.min_len, language_type=self.prompt_config['language_type']) == False: 
                 continue
             if is_title_had_done(title, name) == True:
