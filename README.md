@@ -1,5 +1,4 @@
 <div align="center">
-
 <img src="pictures/title.png" alt="UltraLink" width="200">
 
 **multi-lingual, knowledge-grounded, multi-round dialogue dataset and model**
@@ -19,7 +18,7 @@
 ## Introduction
 ### UltraLink
 UltraLink is a multi-lingual, knowledge-grounded data augmented, multi-round dialogue dataset. It contains language-specific chat data, language-agnostic chat data, code data and math data in 5 languages: English, Chinese, Spanish, Russian, and French. It can be downloaded in this huggingface [link](https://huggingface.co/datasets/R0k1e/UltraLink).
-Different from previous works that simply translate English instructions, we consider both the language-specific and language-agnostic abilities of LLMs. Firstly, we introduce a knowledge-grounded data augmentation approach to elicit more culture-specific knowledge of LLMs, improving their ability to serve users from different countries. Moreover, we find modern LLMs possess strong cross-lingual transfer capabilities, thus repeatedly learning identical content in various languages is not necessary. Consequently, we can substantially prune the language-agnostic SFT data without any performance degradation, making multilingual SFT more efficient. 
+Different from previous works that simply translate English instructions, **we consider both the language-specific and language-agnostic abilities of LLMs.** Firstly, we introduce a knowledge-grounded data augmentation approach to elicit more culture-specific knowledge of LLMs, improving their ability to serve users from different countries. Moreover, we find modern LLMs possess strong cross-lingual transfer capabilities, thus repeatedly learning identical content in various languages is not necessary. Consequently, **we can substantially prune the language-agnostic SFT data without any performance degradation**, making multilingual SFT more efficient. 
 
 ### UltraLink-LM
 > The UltraLink-LM is a massively multilingual generative language model that follows instructions in 5 languages, English, French, Russian, Spanish, and Chinese. The model is capable of generating text in 5 languages with high quality and diversity.
@@ -48,6 +47,7 @@ Evaluations of modern LLMs may be biased and affected by many factors, we are al
 
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
+|Aya | 6.1 | 9.75 | 6.1 | 8.53 | 4.27 | 6.95 |
 |Bloomz-7b1-mt | 8.5 | 7.3 | 6.1 | 8.5 | 6.1 | 7.3 |
 |Phoenix-inst-chat-7b | 11.0 | 10.4 | 8.5 | 1.2 | 13.4 | 12.2 |
 |PolyLM-Multialpaca-13b | 8.5 | 7.3 | 6.1 | 6.1 | 6.1 | 6.8 |
@@ -56,7 +56,7 @@ Evaluations of modern LLMs may be biased and affected by many factors, we are al
 |Okapi-7b | 12.2 | 11.0 | 8.5 | 8.5 | 8.5 | 9.8 |
 |Guanaco-7b | 9.2 | 6.7 | 11.0 | 9.8 | 12.8 | 9.9 |
 |Guanaco-13b| 18.3 | 15.9 | 9.8 | 8.5 | 14.6 | 12.2 |
-|UltraLink-LM  | __60.4__ | __43.9__ | __40.9__ | __49.4__ | __39.6__ | __46.8__|
+|**UltraLink-LM**  | __60.4__ | __43.9__ | __40.9__ | __49.4__ | __39.6__ | __46.8__|
 
 
 ### MGSM
@@ -64,6 +64,8 @@ Evaluations of modern LLMs may be biased and affected by many factors, we are al
 We employ [MGSM](https://github.com/google-research/url-nlp/tree/main/mgsm) to evaluate the math reasoning abilities, which is a multilingual benchmark. It compares the result with correct answers and evaluates the model's ability to perform mathematical reasoning.
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
+|Aya-101| 8.8 | 4 | 6 | 8 | 9.2 | 7.2 |
+|Aya| 28.8 | 5.6 | 18 | 17.2 | 19.2 | 17.76 |
 |Bloomz-7b1-mt | 2.8 | 1.6 | 2.0 | 0.4 | 2.8 | 1.7 |
 |Phoenix-inst-chat-7b | 3.2 | 3.2 | 2.8 | 3.2 | 3.2 | 3.1 |
 |PolyLM-Multialpaca-13b | 1.2 | 2.8 | 1.6 | 2.8 | 2.4 | 2.4 |
@@ -72,13 +74,15 @@ We employ [MGSM](https://github.com/google-research/url-nlp/tree/main/mgsm) to e
 |Okapi-7b | 4.0 | 2.4 | 3.6 | 4.4 | 4.8 | 3.8 |
 |Guanaco-7b | 4.0 | 1.6 | 3.2 | 2.8 | 4.4 | 3.0 |
 |Guanaco-13b | 13.6 | 10.8 | 11.2 | 6.4 | 5.2 | 8.4 |
-|UltraLink-LM| __70.4__ | __56.0__ | __70.4__ | __64.8__ | __63.6__ | __63.7__ |
+|**UltraLink-LM**| __70.4__ | __56.0__ | __70.4__ | __64.8__ | __63.6__ | __65.04__ |
 
 ### OMGEval
 We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat ability, which is a multilingual version of the widely-used English benchmark AlpacaEval.
 
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
+|Aya-101 | 1.37 | 3.9 | 4.1 | 7.73 | 2.03 | 3.83 |
+|Aya | 27.61 | 16.88 | 20.51 | 34.25 | 16.75 | 23.2 |
 |Bloomz-7b1-mt | 0.0 | 0.9 | 0.1 | 0.5 | 0.3 | 0.4 |
 |Phoenix-inst-chat-7b  | 6.9 | 13.3 | 7.4 | 2.9 | 8.1 | 7.7 |
 |PolyLM-Multialpaca-13b  | 3.4 | 5.0 | 2.1 | 5.1 | 2.2 | 3.6 |
@@ -87,14 +91,62 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 |Okapi-7b | 8.8 | 6.2 | 5.0 | 12.1 | 8.7 | 8.2 |
 |Guanaco-7b  | 4.6 | 3.8 | 0.4 | 1.8 | 1.2 | 2.4 |
 |Guanaco-13b  |  __29.0__ | 8.6 | 16.9 | 15.4 | 17.3 | 17.5 |
-|UltraLink-LM |  28.8 |  __21.9__ |  __23.5__ | __37.6__ | __29.0__ |  __28.2__  |
+|**UltraLink-LM** |  28.8 |  __21.9__ |  __23.5__ | __37.6__ | __29.0__ |  __28.2__  |
+
+### ARC
+
+| Model                  | En    | Zh    | Es    | Ru        | Fr    | Avg   |
+| ---------------------- | ----- | ----- | ----- | --------- | ----- | ----- |
+| Aya-101                | 73.08 | 51.88 | 43.33 | 45.42     | 55.77 | 53.90 |
+| Aya                    | 63.95 | 47.35 | 22.05 | 33.28     | 45.25 | 42.38 |
+| Bloomz-7b1-mt          | 77.51 | 57.79 | 60.60 | 35.59     | 60.74 | 58.45 |
+| Phoenix-inst-chat-7b   | 69.98 | 47.17 | 41.20 | 30.20     | 51.41 | 47.99 |
+| PolyLM-Multialpaca-13b | 31.06 | 25.51 | 21.54 | 27.97     | 29.00 | 27.01 |
+| PolyLM-Chat-13b        | 29.31 | 12.33 | 26.50 | 24.38     | 26.95 | 23.89 |
+| Chimera-inst-chat-13b  | 66.23 | 31.16 | 45.30 | 42.26     | 32.16 | 43.42 |
+| Okapi-7b               | 59.75 | 39.90 | 38.03 | 38.84     | 42.86 | 43.88 |
+| Guanaco-7b             | 36.08 | 25.60 | 27.26 | 25.83     | 27.63 | 28.48 |
+| Guanaco-13b            | 60.79 | 39.38 | 6.50  | 13.77     | 17.71 | 27.63 |
+| **UltraLink-LM**       | 76.04 | 50    | 47.35 | **51.32** | 58.85 | 56.71 |
+
+### Hellaswag
+
+| Model                  | En        | Zh        | Es        | Ru        | Fr        | Avg      |
+| ---------------------- | --------- | --------- | --------- | --------- | --------- | -------- |
+| Aya-101                | 75.53     | 50.47     | 62.72     | 54.68     | 61.33     | 60.95    |
+| Aya-101 新测           | 42.97     | 38.14     | 40.81     | 38.74     | 40.98     | 40.33    |
+| aya-101 新框架         | 43.87     | /         | 41.7      | 39.45     | 41.49     | 41.63    |
+| Aya                    | 76.70     | 48.87     | 62.58     | 53.78     | 61.14     | 60.61    |
+| Bloomz-7b1-mt          | 61.07     | 47.53     | 48.55     | 33.06     | 46.16     | 47.27    |
+| Phoenix-inst-chat-7b   | 56.75     | 49.07     | 54.28     | 32.50     | 53.21     | 49.16    |
+| PolyLM-Multialpaca-13b | 65.96     | 49.76     | 51.29     | 46.38     | 50.69     | 52.82    |
+| PolyLM-Chat-13b        | 66.58     | 48.91     | 52.05     | 45.61     | 51.34     | 52.90    |
+| Chimera-inst-chat-13b  | 65.84     | 43.17     | 52.58     | 45.87     | 50.74     | 51.64    |
+| Okapi-7b               | 63.67     | 44.60     | 50.96     | 45.87     | 49.64     | 50.95    |
+| Guanaco-7b             | 65.25     | 37.12     | 43.65     | 35.00     | 42.35     | 44.67    |
+| Guanaco-13b            | 74.51     | 43.37     | 60.57     | 51.81     | 58.39     | 57.73    |
+| **UltraLink-LM**       | **77.46** | **52.77** | **64.77** | **56.05** | **63.45** | **62.9** |
+
+### MMLU
+
+| Model                  | En        | Zh        | Es        | Ru        | Fr        | Avg       |
+| ---------------------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| Aya-101                | 39.94     | 40.69     | 41.38     | 39.99     | 41.19     | 40.64     |
+| Aya-old                | 51.52     | 38.68     | 44.85     | 40.82     | 45.23     | 44.22     |
+| Bloomz-7b1-mt          | 35.89     | 33.56     | 34.67     | 25.88     | 35.1      | 33.02     |
+| Phoenix-inst-chat-7b   | 38.53     | 35.58     | 36.49     | 25.8      | 36.88     | 34.66     |
+| PolyLM-Multialpaca-13b | 26.7      | 25.63     | 24.98     | 24.72     | 25.51     | 25.51     |
+| PolyLM-Chat-13b        | 29.25     | 28.32     | 25.83     | 26.2      | 27.31     | 27.38     |
+| Chimera-inst-chat-13b  | 48.07     | 31.9      | 40.75     | 37.22     | 41.83     | 39.95     |
+| Okapi-7b               | 41.39     | 34.94     | 37.65     | 34.23     | 37.53     | 37.15     |
+| Guanaco-7b             | 28.91     | 24.99     | 27.05     | 26.21     | 27.42     | 26.92     |
+| Guanaco-13b            | 50.62     | 36.6      | 44.35     | 38.26     | 43.75     | 42.72     |
+| **UltraLink-LM**       | **54.22** | **42.71** | **48.95** | **44.39** | **48.29** | **47.71** |
 
 </p>
 </details>
 
 ## Data
-
-The dataset is intended solely for research and educational purposes and should not be construed as reflecting the opinions or views of the creators, owners, or contributors of this dataset. And it is distributed under the MIT license.
 
 
 ### Data Release
@@ -102,9 +154,48 @@ The data consists of four parts, code data, math data, language-specific chat da
 
 - 🤗 [Huggingface Datasets Host](https://huggingface.co/datasets/R0k1e/UltraLink)
 
+### Categories
+
+There are 4 types of data in UltraLink, which are code data, math data, language-agnostic chat data, and language-specific chat data. All types of data are expressed in previously mentioned 5 languages. Each type of data has been marked using the title of each file. **They are all named as the format ``` {linguistic type}_{data type}.jsonl```**. For example, the ```en_code.jsonl``` specifies the English code data.
+
+* **Code data**(```code```): Code generation, which is generated with our language-agnostic pipeline. 
+* **Math data**(```math```): Math reasoning, which is generated with our language-agnostic pipeline.
+* **Language-agnostic chat data**(```chat_agnostic```): The dialogue that is not related to the language itself and the related culture. The data is generated with our language-agnostic pipeline.
+* **Language-specific chat data**(```chat_specific```): The dialogue that is highly related to the language itself and the related culture. The data is generated with our language-specific pipeline.
+
+<div align="center">
+<img src="pictures/data_distribution.png" alt="data distribution" width="500">
+</div>
+
+
+### Statistics
+
+UltraLink contains Language-specific Chat data (147K), Language-agnostic Chat data (112K), Math data (523K), and Code data (250K), which are measured by the number of dialogues.
+
+The estimated average lengths of questions and answers are shown in the figure below, which are measured by the number of tokens. The answer is significantly longer than the question across all languages.
+
+<div align="center">
+<img src="pictures/token_len.jpg" alt="token_len" width="600">
+</div>
+
+
+### Comparison
+
+UltraLink contains **multi-turn conversations** and exhibits the **longest average length per turn** (i.e., 378.21 tokens), considering both questions and answers. The table below shows the comparison between UltraLink and existing open-source multilingual SFT datasets.
+
+| Dataset                                                      | Dialogues   | Turns       | Question(Avg) | Answer(Avg)  | Turn(Avg)    |
+| ------------------------------------------------------------ | ----------- | ----------- | ------------- | ------------ | ------------ |
+| Okapi Dataset ([Lai et al., 2023](https://aclanthology.org/2023.emnlp-demo.28)) | 207K        | 207K        | 28.64         | 95.72        | 124.36       |
+| Guanaco Dataset ([Attardi, 2023](https://guanaco-model.github.io/)) | ***1173K*** | 1173K       | 77.58         | 83.31        | 160.89       |
+| Multialpaca ([Wei et al., 2023a](https://api.semanticscholar.org/CorpusID:259837230)) | 132K        | 132K        | 39.86         | 83.71        | 123.57       |
+| Phoenix SFT data ([Chen et al., 2023](https://api.semanticscholar.org/CorpusID:258236343)) | 464K        | 893K        | ***165.27***  | 200.07       | 365.34       |
+| UltraLink (***Ours***)                                       | 1032K       | ***1623K*** | 87.86         | ***290.35*** | ***378.21*** |
+
+
+
 
 ### Data Format
-Each line in the downloaded data file is a json dict containing the data id and dialogue data in a list format. The id is begin wizh the file name and connected with the sequence number. Below is an example line.
+Each line in the downloaded data file is a json dict containing the data id and dialogue data in a list format. The id is begin with the file name and connected with the sequence number. Below are example lines.
 
 ```
 {
@@ -152,7 +243,7 @@ Each line in the downloaded data file is a json dict containing the data id and 
 ## Construction of UltraLink
 <img src="pictures/flow_diagram.png" alt="flow diagram" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
  In this work, we propose a construction framework consisting of two pipelines. The language-specific pipeline employs a newly introduced knowledge-grounded data augmentation approach to generate conversations with detailed cultural backgrounds. The language-agnostic pipeline leverages a two-stage translation mechanism to effectively utilize the existing English SFT data, with fewer translation errors caused by cultural differences. 
- 
+
 ### Pipeline 1: Language-Specific Pipeline
 The cultures around the world are vibrant and diverse, reflecting the lifestyles and perspectives of people from various countries and regions. To better cater to diverse users, the cultural diversity of multilingual LLMs should be improved. In this work, we propose a knowledge-grounded data augmentation method, leveraging language-specific knowledge bases to provide intricate and varied cultural backgrounds. Our method mainly contains two steps: (1) preparing and sampling knowledge from knowledge bases as cultural backgrounds, and (2) steering LLMs to generate informative conversations given the provided cultural backgrounds.
 
@@ -166,6 +257,7 @@ In this study, we consider three key components of general abilities for LLMs: c
 - [ ] Upload the training code
 
 ## Citation
+The dataset is intended solely for research and educational purposes and should not be construed as reflecting the opinions or views of the creators, owners, or contributors of this dataset. And it is distributed under the MIT license.
 Feel free to cite the repo if you think UltraLink is useful.
 
 ```bibtex
