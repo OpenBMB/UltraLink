@@ -4,12 +4,16 @@
 **multi-lingual, knowledge-grounded, multi-round dialogue dataset and model**
 
 <p align="center">
- <a href="#Introduction"> Introduction </a> •
+ •<a href="#Introduction"> Introduction </a> •
  <a href="#Construction-of-UltraLink">Construction Process</a> •
+ <a href="#Framework Overview">Framework Overview</a> 
+ <br>•
+ <a href="#Usage Instructions">Usage Instructions</a> •
  <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
  <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> UltraLink</a> •
  <a href="https://huggingface.co/R0k1e/UltraLink-LM"> UltraLink-LM</a>
 </p>
+
 </div>
 
 ## News
@@ -146,6 +150,12 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 </p>
 </details>
 
+### Multi-Round Dialogue Dataset Generator for UltraLink
+
+Welcome to the Multi-Round Dialogue Dataset Generator, a dedicated module within the expansive UltraLink project. UltraLink stands as a pioneering venture, aiming to revolutionize conversational AI through the creation of a multi-lingual, knowledge-grounded, data-augmented, multi-round dialogue dataset.
+
+In pursuit of enriching UltraLink's dataset with diverse and realistic dialogues, we present the Multi-Round Dialogue Dataset Generator. This tool is ingeniously designed to harness the vast, encyclopedic wealth of Wikipedia, transforming its textual content into intricately structured, multi-round dialogues. Our generator is a cornerstone in expanding UltraLink's dataset, introducing a wealth of contextual, real-world knowledge into our dialogues, thus broadening the horizons for knowledge-grounded conversational AI.
+
 ## Data
 
 
@@ -251,7 +261,95 @@ The cultures around the world are vibrant and diverse, reflecting the lifestyles
 In addition to language-specific abilities, the general abilities that are language-agnostic are also essential for LLMs. As numerous high-quality English SFT datasets already encompass a broad spectrum of general abilities, we suggest employing a two-stage translation mechanism to maximize the utility of existing English resources. Our goal is to reduce translation errors caused by cultural differences, since some questions can not be directly translated into other languages (e.g., write an English poem where each sentence starts with the letter "A"). In the first stage, we introduce a multi-criteria mechanism to filter out English-specific conversations that are difficult to translate accurately into other languages. Then we use GPT-3.5 to translate the remaining language-agnostic data. 
 In this study, we consider three key components of general abilities for LLMs: chat, math reasoning, and code generation. For chat, we use ShareGPT as the English chat data, which consists of multi-turn dialogues between human users and ChatGPT. For math reasoning, we use MetaMath as the English math data. For code generation, we use the Magicoder dataset as the English code data.
 
+## Framework Overview
+
+The Multi-Round Dialogue Dataset Generator leverages Wikipedia as a foundational source to create rich, multi-round dialogue datasets. The process unfolds in several key stages, outlined in our framework below:
+
+1. **Download and Extract Wikipedia Data**: With the text data prepared, the 'QuestionGenerator.py' script generates an initial question based on the content. This question mimics a natural, human inquiry that might arise from reading the text.
+2. **Generate Initial Question**: Uses code to preprocess data and generate figures, with self-debugging capabilities.
+3. **Generate Dialogue**: Taking both the original text and the initial question, the 'DialogGenerator.py' script then crafts a multi-round dialogue. This dialogue is designed to simulate a natural and engaging conversation that could occur between humans, grounded in the Wikipedia text.
+
+## Usage Instructions
+
+To generate multi-round dialogue datasets with the Multi-Round Dialogue Dataset Generator, follow these steps carefully. The process involves downloading Wikipedia dumps, extracting text data, and finally running the dialogue generation script.
+
+### Step 1: Download Wikipedia Data Dump
+
+1. Visit the Wikipedia dumps page at https://dumps.wikimedia.org/backup-index.html.
+2. Identify the language version of Wikipedia you're interested in by looking for the corresponding file name prefix. The file names are generally formatted as xxwiki, where xx represents the language code (e.g., 'en' for English, 'fr' for French).
+3. Download the latest dump of your chosen language. These files can be large, so ensure you have sufficient storage space and a stable internet connection.
+
+### Step 2: Extract Wikipedia Data
+
+1. With the Wikipedia dump downloaded, the next step is to extract usable text from it. We'll use the WikiExtractor tool for this purpose.
+2. Visit https://github.com/attardi/wikiextractor to download and review the instructions for WikiExtractor.
+3. Follow the WikiExtractor documentation to install the tool and extract the text from your downloaded Wikipedia dump. The output will be organized in a series of folders containing the extracted text in a more accessible format.
+
+### Step 3:
+
+1. Locate the Monitor.py file within the Multi-Round Dialogue Dataset Generator's directory.
+2. Open a command line interface (CLI) and navigate to the directory containing Monitor.py.
+3. Execute the script by running: 
+
+```
+python Monitor.py 
+    --wiki_path ./wikipedia/ \
+    --question_path ./question \
+    --dialog_path ./dialog \
+    --prompt_path ./prompt.yaml \
+    --language zh 
+```
+
+Ensure all argparse parameters are modified according to your specific requirements before running the script.
+-- **wiki_path**: Specifies the path to the directory containing Wikipedia data extracted using WikiExtractor.
+-- **question_path**: Designates the directory path where the generated questions will be stored.
+-- **dialog_path**: Indicates the directory path where the generated dialogues will be stored.
+
+
+### Additional Information
+
+- The process of generating dialogues can be time-consuming, depending on the volume of data and your computer's specifications.
+- Once completed, the generated dataset will be available in the script's specified output directory.
+
+
+## Command Line Interface Configuration (CLI Configuration)
+
+-- **wiki_path**, -wi: Specifies the path to the directory containing the Wikipedia data extracted using WikiExtractor. This is the source data for generating dialogues.
+
+-- **question_path**, -qp: Designates the directory path where the generated questions will be stored. This path is used to save the initial questions that spark the dialogues.
+
+-- **dialog_path**, -dp: Indicates the directory path where the generated dialogues will be saved. This is where you can find the final output of the dialogue generation process.
+
+-- **save_interval**, -si: Determines the frequency of saving the generated results to disk. A lower number means more frequent saves, which can be useful for large datasets.
+
+-- **doc_num**, -dn: Defines the number of documents to process from the source data. Setting this to zero (0) processes all available documents.
+
+-- **split_len**, -sl: The length of text after which it will be split into a new segment for dialogue generation. Helps manage the size of text chunks being processed.
+
+-- **max_len**: The maximum length of text considered for each segment of dialogue generation. Longer texts will be split according to the --split_len parameter.
+
+-- **min_len**: The minimum length of text required for it to be considered for dialogue generation. Shorter texts will be ignored.
+
+-- **min_answer_len**, -mal: Sets the minimum length for generated answers within dialogues. Ensures that responses are sufficiently informative.
+
+-- **max_step_len**, -msl: The maximum step length when randomly selecting the next file for dialogue generation, helping to diversify the source texts.
+
+-- **end_probability**, -ep: The initial probability of a dialogue ending after each exchange. This probability doubles with each extension of the dialogue length, simulating natural conversation closure.
+
+-- **num_workers**, -nw: The number of worker processes used for parallel processing of data. Increasing this number can speed up the generation process on multi-core systems.
+
+-- **prompt_path**, -pp: The path to a YAML configuration file that defines prompts used for generating dialogues, allowing for custom initiation of conversations.
+
+-- **filter_path**, -sp: Specifies the path to a YAML file containing words that should be filtered out from the generated dialogues, ensuring content appropriateness.
+
+-- **generate_without_doc**, -gwd: A flag that, when set to true, enables the generation of dialogues without directly referencing the source documents, fostering creativity.
+
+-- **language**, -l: Indicates the language of the documents to be processed, enabling support for multi-lingual dialogue generation.
+
+-- **add_mode**, -am: A boolean flag that, when set, appends the generated results to an existing file instead of creating new ones, useful for continuous data accumulation.
+
 ## To Do
+
 - [x] Upload the data and the model weight
 - [ ] Upload the data generation pipeline code
 - [ ] Upload the training code
