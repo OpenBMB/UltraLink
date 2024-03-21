@@ -4,14 +4,13 @@
 **multi-lingual, knowledge-grounded, multi-round dialogue dataset and model**
 
 <p align="center">
- •<a href="#Introduction"> Introduction </a> •
- <a href="#Construction-of-UltraLink">Construction Process</a> •
- <a href="#Framework Overview">Framework Overview</a> 
+ •<a href="#Introduction"> 📚Introduction </a> •
+ <a href="#Construction-of-UltraLink">⚙Construction Process</a> 
  <br>•
- <a href="#Usage Instructions">Usage Instructions</a> •
- <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
- <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> UltraLink</a> •
- <a href="https://huggingface.co/R0k1e/UltraLink-LM"> UltraLink-LM</a>
+ <a href="#Dataset-Generator">🛠Dataset Generator</a> •
+ <a href="https://arxiv.org/abs/2402.04588">📜Paper</a> •
+ <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> 🌏UltraLink</a> •
+ <a href="https://huggingface.co/R0k1e/UltraLink-LM"> 🤖UltraLink-LM</a>
 </p>
 
 </div>
@@ -150,12 +149,6 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 </p>
 </details>
 
-### Multi-Round Dialogue Dataset Generator for UltraLink
-
-Welcome to the Multi-Round Dialogue Dataset Generator, a dedicated module within the expansive UltraLink project. UltraLink stands as a pioneering venture, aiming to revolutionize conversational AI through the creation of a multi-lingual, knowledge-grounded, data-augmented, multi-round dialogue dataset.
-
-In pursuit of enriching UltraLink's dataset with diverse and realistic dialogues, we present the Multi-Round Dialogue Dataset Generator. This tool is ingeniously designed to harness the vast, encyclopedic wealth of Wikipedia, transforming its textual content into intricately structured, multi-round dialogues. Our generator is a cornerstone in expanding UltraLink's dataset, introducing a wealth of contextual, real-world knowledge into our dialogues, thus broadening the horizons for knowledge-grounded conversational AI.
-
 ## Data
 
 
@@ -261,7 +254,15 @@ The cultures around the world are vibrant and diverse, reflecting the lifestyles
 In addition to language-specific abilities, the general abilities that are language-agnostic are also essential for LLMs. As numerous high-quality English SFT datasets already encompass a broad spectrum of general abilities, we suggest employing a two-stage translation mechanism to maximize the utility of existing English resources. Our goal is to reduce translation errors caused by cultural differences, since some questions can not be directly translated into other languages (e.g., write an English poem where each sentence starts with the letter "A"). In the first stage, we introduce a multi-criteria mechanism to filter out English-specific conversations that are difficult to translate accurately into other languages. Then we use GPT-3.5 to translate the remaining language-agnostic data. 
 In this study, we consider three key components of general abilities for LLMs: chat, math reasoning, and code generation. For chat, we use ShareGPT as the English chat data, which consists of multi-turn dialogues between human users and ChatGPT. For math reasoning, we use MetaMath as the English math data. For code generation, we use the Magicoder dataset as the English code data.
 
-## Framework Overview
+## Dataset Generator
+
+### Multi-Round Dialogue Dataset Generator for UltraLink
+
+> Welcome to the Multi-Round Dialogue Dataset Generator, a dedicated module within the expansive UltraLink project. UltraLink stands as a pioneering venture, aiming to revolutionize conversational AI through the creation of a multi-lingual, knowledge-grounded, data-augmented, multi-round dialogue dataset.
+
+> In pursuit of enriching UltraLink's dataset with diverse and realistic dialogues, we present the Multi-Round Dialogue Dataset Generator. This tool is ingeniously designed to harness the vast, encyclopedic wealth of Wikipedia, transforming its textual content into intricately structured, multi-round dialogues. Our generator is a cornerstone in expanding UltraLink's dataset, introducing a wealth of contextual, real-world knowledge into our dialogues, thus broadening the horizons for knowledge-grounded conversational AI.
+
+#### Framework Overview
 
 The Multi-Round Dialogue Dataset Generator leverages Wikipedia as a foundational source to create rich, multi-round dialogue datasets. The process unfolds in several key stages, outlined in our framework below:
 
@@ -269,23 +270,23 @@ The Multi-Round Dialogue Dataset Generator leverages Wikipedia as a foundational
 2. **Generate Initial Question**: Uses code to preprocess data and generate figures, with self-debugging capabilities.
 3. **Generate Dialogue**: Taking both the original text and the initial question, the 'DialogGenerator.py' script then crafts a multi-round dialogue. This dialogue is designed to simulate a natural and engaging conversation that could occur between humans, grounded in the Wikipedia text.
 
-## Usage Instructions
+#### Usage Instructions
 
 To generate multi-round dialogue datasets with the Multi-Round Dialogue Dataset Generator, follow these steps carefully. The process involves downloading Wikipedia dumps, extracting text data, and finally running the dialogue generation script.
 
-### Step 1: Download Wikipedia Data Dump
+**Step 1: Download Wikipedia Data Dump**
 
 1. Visit the Wikipedia dumps page at https://dumps.wikimedia.org/backup-index.html.
 2. Identify the language version of Wikipedia you're interested in by looking for the corresponding file name prefix. The file names are generally formatted as xxwiki, where xx represents the language code (e.g., 'en' for English, 'fr' for French).
 3. Download the latest dump of your chosen language. These files can be large, so ensure you have sufficient storage space and a stable internet connection.
 
-### Step 2: Extract Wikipedia Data
+**Step 2: Extract Wikipedia Data**
 
 1. With the Wikipedia dump downloaded, the next step is to extract usable text from it. We'll use the WikiExtractor tool for this purpose.
 2. Visit https://github.com/attardi/wikiextractor to download and review the instructions for WikiExtractor.
 3. Follow the WikiExtractor documentation to install the tool and extract the text from your downloaded Wikipedia dump. The output will be organized in a series of folders containing the extracted text in a more accessible format.
 
-### Step 3:
+**Step 3:**
 
 1. Locate the Monitor.py file within the Multi-Round Dialogue Dataset Generator's directory.
 2. Open a command line interface (CLI) and navigate to the directory containing Monitor.py.
@@ -305,14 +306,13 @@ Ensure all argparse parameters are modified according to your specific requireme
 -- **question_path**: Designates the directory path where the generated questions will be stored.
 -- **dialog_path**: Indicates the directory path where the generated dialogues will be stored.
 
-
-### Additional Information
+***Additional Information***
 
 - The process of generating dialogues can be time-consuming, depending on the volume of data and your computer's specifications.
 - Once completed, the generated dataset will be available in the script's specified output directory.
 
 
-## Command Line Interface Configuration (CLI Configuration)
+#### Command Line Interface Configuration (CLI Configuration)
 
 -- **wiki_path**, -wi: Specifies the path to the directory containing the Wikipedia data extracted using WikiExtractor. This is the source data for generating dialogues.
 
@@ -348,10 +348,52 @@ Ensure all argparse parameters are modified according to your specific requireme
 
 -- **add_mode**, -am: A boolean flag that, when set, appends the generated results to an existing file instead of creating new ones, useful for continuous data accumulation.
 
+### Multilingual Language-Agnostic Data Generator
+
+> To expanding multilingual language-agnostic data in UltraLink, we introducing a data generator tool which includes data sifting and data translating. The data generator supports 4 kinds of dataset which are ShareGPT, MetaMath, Magicoder and HumanEval. 
+
+#### Usage Instructions
+
+To obtain multilingual language-agnostic data, sifting and translating are required. For ShareGPT, a dialogue dataset, we need to filter out language-specific data. For other datasets, which is a language-agnostic dataset originally, the filtering step can be skipped. Then translation is executed with the help of GPT-3.5. 
+
+**Step1: Obtain required datasets**
+
+Download datasets from [ShareGPT](https://sharegpt.com), [MetaMath](https://meta-math.github.io/), [Magicoder](https://github.com/ise-uiuc/magicoder) and [HumanEval]( https://www.github.com/openai/human-eval). 
+
+**Step2: Filter out language-specific data**
+
+For the ShareGPT dataset, the command below is helpful to do the sifting task. Configuration on the input and output file path is needed.
+
+```
+python sift_sharegpt.py
+```
+
+**Step3: Translating** 
+
+4 designate types of conversion are supported which are ShareGPT, MetaMath, Magicoder and HumanEval.  4 python programs are helpful, which are ```convert_sharegpt.py```, ```convert_math.py```, ```convert_code.py```,  ```convert_humaneval.py```. An example is as below. 
+
+```
+python convert_sharegpt.py
+    --en_file ./sharegpt.jsonl
+    --languages zh 
+```
+
+```en_file``` is the path of file to be converted.
+
+```languages``` are the target languages. The language must be valid in UltraLink. 
+
+***Other parameters:***
+
+```volume``` is the maximum number of items to be converted. 
+
+```worker_num``` is the maximum number of worker threads which request translations. 
+
+```prompt_path``` is the path of prompt configuration file. You can modify the prompt configuration file to obtain data of more languages.
+
 ## To Do
 
 - [x] Upload the data and the model weight
-- [ ] Upload the data generation pipeline code
+- [x] Upload the data generation pipeline code
 - [ ] Upload the training code
 
 ## Citation
