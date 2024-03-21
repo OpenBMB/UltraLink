@@ -4,13 +4,13 @@
 **multi-lingual, knowledge-grounded, multi-round dialogue dataset and model**
 
 <p align="center">
- •<a href="#Introduction"> 📚Introduction </a> •
- <a href="#Construction-of-UltraLink">⚙Construction Process</a> 
+ •<a href="#Introduction"> Introduction </a> •
+ <a href="#Construction-of-UltraLink">Construction Process</a> 
  <br>•
- <a href="#Dataset-Generator">🛠Dataset Generator</a> •
- <a href="https://arxiv.org/abs/2402.04588">📜Paper</a> •
- <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> 🌏UltraLink</a> •
- <a href="https://huggingface.co/R0k1e/UltraLink-LM"> 🤖UltraLink-LM</a>
+ <a href="#Dataset-Generator">Dataset Generator</a> •
+ <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
+ <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> UltraLink</a> •
+ <a href="https://huggingface.co/R0k1e/UltraLink-LM"> UltraLink-LM</a>
 </p>
 
 </div>
@@ -364,38 +364,38 @@ To obtain multilingual language-agnostic data, sifting and translating are requi
 
   For the ShareGPT dataset, the command below is helpful to do the sifting task. Configuration on the input and output file path is needed.
 
-```
-python sift_sharegpt.py
-```
+  ```
+  python sift_sharegpt.py
+  ```
 
 * **Step3: Translating** 
 
   4 designated types of conversion are supported which are ShareGPT, MetaMath, Magicoder and HumanEval.  4 python programs are helpful, which are ```convert_sharegpt.py```, ```convert_math.py```, ```convert_code.py```,  ```convert_humaneval.py```. An example is as below. 
 
-```
-python convert_sharegpt.py
-    --en_file ./sharegpt.jsonl
-    --languages zh 
-```
+  ```
+  python convert_sharegpt.py
+      --en_file ./sharegpt.jsonl
+      --languages zh 
+  ```
 
-To use GPT3.5, configuration on "OPENAI_API_KEY" is required. 2 lines need to be added in the python program. Below is an example.
+  To use GPT3.5, configuration on "*OPENAI_API_KEY*" is required. 2 lines need to be added in the python program. Below is an example.
 
-```python
-os.environ["OPENAI_API_KEY"] = "xxxxx"
-os.environ["OPENAI_API_URL"] = "" # fill this with the website providng GPT service. 
-```
+  ```
+  os.environ["OPENAI_API_KEY"] = "xxxxx"
+  os.environ["OPENAI_API_URL"] = "" # fill this with the website providng GPT service. 
+  ```
 
-```en_file``` is the path of file to be converted.
+  ***Parameters:***
 
-```languages``` are the target languages. The language must be valid in UltraLink. 
+  ```en_file``` is the path of file to be converted.
 
-***Other parameters:***
+  ```languages``` are the target languages. The language must be valid in UltraLink. 
 
-```volume``` is the maximum number of items can be converted. 
+  ```volume``` is the maximum number of items can be converted. 
 
-```worker_num``` is the maximum number of worker threads which request translations. 
+  ```worker_num``` is the maximum number of worker threads which request translations. 
 
-```prompt_path``` is the path of prompt configuration file. You can modify the prompt configuration file to obtain data of more languages.
+  ```prompt_path``` is the path of prompt configuration file. You can modify the prompt configuration file to obtain data of more languages.
 
 ## To Do
 
