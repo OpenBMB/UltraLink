@@ -274,23 +274,23 @@ The Multi-Round Dialogue Dataset Generator leverages Wikipedia as a foundational
 
 To generate multi-round dialogue datasets with the Multi-Round Dialogue Dataset Generator, follow these steps carefully. The process involves downloading Wikipedia dumps, extracting text data, and finally running the dialogue generation script.
 
-**Step 1: Download Wikipedia Data Dump**
+* **Step 1: Download Wikipedia Data Dump**
+  1. Visit the Wikipedia dumps page at https://dumps.wikimedia.org/backup-index.html.
+  1. Identify the language version of Wikipedia you're interested in by looking for the corresponding file name prefix. The file names are generally formatted as xxwiki, where xx represents the language code (e.g., 'en' for English, 'fr' for French).
+  1. Download the latest dump of your chosen language. These files can be large, so ensure you have sufficient storage space and a stable internet connection.
 
-1. Visit the Wikipedia dumps page at https://dumps.wikimedia.org/backup-index.html.
-2. Identify the language version of Wikipedia you're interested in by looking for the corresponding file name prefix. The file names are generally formatted as xxwiki, where xx represents the language code (e.g., 'en' for English, 'fr' for French).
-3. Download the latest dump of your chosen language. These files can be large, so ensure you have sufficient storage space and a stable internet connection.
 
-**Step 2: Extract Wikipedia Data**
+* **Step 2: Extract Wikipedia Data**
+  1. With the Wikipedia dump downloaded, the next step is to extract usable text from it. We'll use the WikiExtractor tool for this purpose.
+  1. Visit https://github.com/attardi/wikiextractor to download and review the instructions for WikiExtractor.
+  1. Follow the WikiExtractor documentation to install the tool and extract the text from your downloaded Wikipedia dump. The output will be organized in a series of folders containing the extracted text in a more accessible format.
 
-1. With the Wikipedia dump downloaded, the next step is to extract usable text from it. We'll use the WikiExtractor tool for this purpose.
-2. Visit https://github.com/attardi/wikiextractor to download and review the instructions for WikiExtractor.
-3. Follow the WikiExtractor documentation to install the tool and extract the text from your downloaded Wikipedia dump. The output will be organized in a series of folders containing the extracted text in a more accessible format.
 
-**Step 3:**
+* **Step 3:**
+  1. Locate the Monitor.py file within the Multi-Round Dialogue Dataset Generator's directory.
+  1. Open a command line interface (CLI) and navigate to the directory containing Monitor.py.
+  1. Execute the script by running: 
 
-1. Locate the Monitor.py file within the Multi-Round Dialogue Dataset Generator's directory.
-2. Open a command line interface (CLI) and navigate to the directory containing Monitor.py.
-3. Execute the script by running: 
 
 ```
 python Monitor.py 
@@ -350,32 +350,39 @@ Ensure all argparse parameters are modified according to your specific requireme
 
 ### Multilingual Language-Agnostic Data Generator
 
-> To expanding multilingual language-agnostic data in UltraLink, we introducing a data generator tool which includes data sifting and data translating. The data generator supports 4 kinds of dataset which are ShareGPT, MetaMath, Magicoder and HumanEval. 
+> To expand multilingual language-agnostic dataset in UltraLink, we introduce a data generator tool which includes data sifting and data translating. The data generator supports 4 kinds of dataset which are ShareGPT, MetaMath, Magicoder and HumanEval. 
 
 #### Usage Instructions
 
-To obtain multilingual language-agnostic data, sifting and translating are required. For ShareGPT, a dialogue dataset, we need to filter out language-specific data. For other datasets, which is a language-agnostic dataset originally, the filtering step can be skipped. Then translation is executed with the help of GPT-3.5. 
+To obtain multilingual language-agnostic data, sifting and translating are required. For ShareGPT, a dialogue dataset, we need to filter out language-specific data. For other datasets, which are language-agnostic datasets originally, the filtering step can be skipped. Then translation is executed with the help of GPT-3.5. 
 
-**Step1: Obtain required datasets**
+* **Step1: Obtain required datasets**
 
-Download datasets from [ShareGPT](https://sharegpt.com), [MetaMath](https://meta-math.github.io/), [Magicoder](https://github.com/ise-uiuc/magicoder) and [HumanEval]( https://www.github.com/openai/human-eval). 
+  Download datasets from [ShareGPT](https://sharegpt.com), [MetaMath](https://meta-math.github.io/), [Magicoder](https://github.com/ise-uiuc/magicoder) and [HumanEval]( https://www.github.com/openai/human-eval). 
 
-**Step2: Filter out language-specific data**
+* **Step2: Filter out language-specific data**
 
-For the ShareGPT dataset, the command below is helpful to do the sifting task. Configuration on the input and output file path is needed.
+  For the ShareGPT dataset, the command below is helpful to do the sifting task. Configuration on the input and output file path is needed.
 
 ```
 python sift_sharegpt.py
 ```
 
-**Step3: Translating** 
+* **Step3: Translating** 
 
-4 designate types of conversion are supported which are ShareGPT, MetaMath, Magicoder and HumanEval.  4 python programs are helpful, which are ```convert_sharegpt.py```, ```convert_math.py```, ```convert_code.py```,  ```convert_humaneval.py```. An example is as below. 
+  4 designated types of conversion are supported which are ShareGPT, MetaMath, Magicoder and HumanEval.  4 python programs are helpful, which are ```convert_sharegpt.py```, ```convert_math.py```, ```convert_code.py```,  ```convert_humaneval.py```. An example is as below. 
 
 ```
 python convert_sharegpt.py
     --en_file ./sharegpt.jsonl
     --languages zh 
+```
+
+To use GPT3.5, configuration on "OPENAI_API_KEY" is required. 2 lines need to be added in the python program. Below is an example.
+
+```python
+os.environ["OPENAI_API_KEY"] = "xxxxx"
+os.environ["OPENAI_API_URL"] = "" # fill this with the website providng GPT service. 
 ```
 
 ```en_file``` is the path of file to be converted.
@@ -384,7 +391,7 @@ python convert_sharegpt.py
 
 ***Other parameters:***
 
-```volume``` is the maximum number of items to be converted. 
+```volume``` is the maximum number of items can be converted. 
 
 ```worker_num``` is the maximum number of worker threads which request translations. 
 
