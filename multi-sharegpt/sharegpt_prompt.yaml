@@ -74,3 +74,117 @@
     Traduction :
     Quelle heure est-il ?
   prompt2: >
+- language: ja
+  text: '原文：'
+  translation: '翻訳：'
+  prompt1: >
+    与えられた英文を日本語に翻訳し、翻訳プロセスで文の*流れと自然さ*を保つよう注意してください。
+    ###
+    次の翻訳ルールに従ってください：
+    1.翻訳プロセス中に内容の完全性と一貫性を保ち、いかなる情報も追加または削除してはいけません。
+    2.翻訳後のテキストが自然で流れるようにし、可能な限り中国語の一般的な表現方法を使用し、専門用語は対応する定義翻訳を採用し、日本語の表現習慣に合うようにしてください。
+    3.一部の語彙が自然言語ではなく、数学記号、プログラミング言語、またはLaTex言語である場合は、原文を直接コピーしてください。
+    4.一部の語彙に日本語の対応がない場合は、原文を直接コピーしてください。
+    5.引用と参考文献については、原文を直接コピーしてください。
+    ###
+    例：
+    原文：
+    What time is it?
+    翻訳：
+    今何時ですか？
+  prompt2: >
+- language: ar
+  text: 'النص الأصلي:'
+  translation: 'الترجمة:'
+  prompt1: >
+    ترجمة النص الإنجليزي المعطى إلى العربية، مع الانتباه إلى ضمان انسيابية وطبيعية الجمل خلال عملية الترجمة.
+    ###
+    يرجى الالتزام بالقواعد التالية للترجمة:
+    1.ضمان الاكتمال والتناسق في المحتوى خلال عملية الترجمة، مع عدم إضافة أو حذف أي معلومات.
+    2.التأكد من أن النص المترجم طبيعي وسلس، مع استخدام أكثر العبارات شيوعًا في اللغة الصينية قدر الإمكان، واستخدام الترجمات المحددة للمصطلحات الفنية، بما يتوافق مع عادات التعبير باللغة العربية.
+    3.إذا كان بعض المصطلحات ليس بلغة طبيعية بل عبارة عن رموز رياضية، لغات برمجة، أو لغة LaTex، يرجى نسخ النص الأصلي مباشرةً.
+    4.إذا لم يكن هناك مقابل باللغة العربية لبعض المصطلحات، يرجى نسخ النص الأصلي مباشرةً.
+    5.بالنسبة للاقتباسات والمراجع، يرجى نسخ النص الأصلي مباشرةً.
+    ###
+    مثال:
+    النص الأصلي:
+    What time is it?
+    الترجمة:
+    كم الساعة الآن؟
+  prompt2: >
+- language: de
+  text: 'Originaltext:'
+  translation: 'Übersetzung:'
+  prompt1: >
+    Übersetzen Sie den gegebenen englischen Originaltext ins Deutsche und achten Sie dabei darauf, dass die Sätze *flüssig und natürlich* klingen.
+    ###
+    Beachten Sie die folgenden Übersetzungsregeln:
+    1.Stellen Sie während des Übersetzungsprozesses sicher, dass die Vollständigkeit und Konsistenz des Inhalts gewahrt bleibt, ohne jegliche Informationen hinzuzufügen oder zu entfernen.
+    2.Sorgen Sie dafür, dass der übersetzte Text in einer natürlichen und fließenden Sprache verfasst ist, und verwenden Sie nach Möglichkeit die gängigsten Ausdrucksweisen des Chinesischen, wobei Fachbegriffe die entsprechenden festgelegten Übersetzungen verwenden sollten, die den Ausdrucksgewohnheiten des Deutschen entsprechen.
+    3.Wenn bestimmte Begriffe keine natürliche Sprache sind, sondern mathematische Symbole, Programmiersprachen oder die LaTex-Sprache, kopieren Sie bitte den Originaltext direkt.
+    4.Wenn für bestimmte Begriffe keine deutschen Entsprechungen existieren, kopieren Sie bitte ebenfalls den Originaltext.
+    5.Für Zitate und Referenzen kopieren Sie bitte direkt den Originaltext.
+    ###
+    Beispiel:
+    Originaltext:
+    What time is it?
+    Übersetzung:
+    Wie spät ist es?
+  prompt2: >
+- language: it
+  text: 'Testo originale:'
+  translation: 'Traduzione:'
+  prompt1: >
+    Traduci il testo inglese dato in italiano, facendo attenzione a garantire che le frasi siano *fluide e naturali* nel processo di traduzione.
+    ###
+    Si prega di seguire le seguenti regole di traduzione:
+    1.Assicurati di mantenere l'integrità e la coerenza del contenuto durante il processo di traduzione, senza aggiungere o rimuovere alcuna informazione.
+    2.Assicurati che il testo tradotto sia scritto in un linguaggio naturale e scorrevole, utilizzando le espressioni più comuni del cinese dove possibile, e che i termini tecnici siano tradotti con le corrispondenti traduzioni stabilite, in linea con le abitudini espressive dell'italiano.
+    3.Se alcuni termini non sono linguaggio naturale ma simboli matematici, linguaggi di programmazione o linguaggio LaTex, si prega di copiare direttamente il testo originale.
+    4.Se alcuni termini non hanno un equivalente in italiano, copiare direttamente il testo originale.
+    5.Per citazioni e riferimenti bibliografici, copiare direttamente il testo originale.
+    ###
+    Esempio:
+    Testo originale:
+    What time is it?
+    Traduzione:
+    Che ore sono?
+  prompt2: >
+- language: pt
+  text: 'Texto original:'
+  translation: 'Tradução:'
+  prompt1: >
+    Traduza o texto em inglês dado para o português, prestando atenção para garantir que as frases sejam *fluídas e naturais* no processo de tradução.
+    ###
+    Por favor, siga as seguintes regras de tradução:
+    1.Durante o processo de tradução, garanta a integridade e consistência do conteúdo, sem adicionar ou remover qualquer informação.
+    2.Certifique-se de que o texto traduzido esteja em uma linguagem natural e fluente, usando as expressões mais comuns do chinês quando possível, e que os termos técnicos sejam traduzidos conforme as traduções estabelecidas, de acordo com os costumes de expressão do português.
+    3.Se alguns termos não forem linguagem natural, mas símbolos matemáticos, linguagens de programação ou a linguagem LaTex, por favor, copie o texto original diretamente.
+    4.Se alguns termos não tiverem um equivalente em português, copie diretamente o texto original.
+    5.Para citações e referências, copie diretamente o texto original.
+    ###
+    Exemplo:
+    Texto original:
+    What time is it?
+    Tradução:
+    Que horas são?
+  prompt2: >
+- language: ko
+  text: '원문:'
+  translation: '번역:'
+  prompt1: >
+    주어진 영어 원문을 한국어로 번역하면서, 번역 과정에서 문장이 *자연스럽고 매끄러운* 것을 보장하십시오.
+    ###
+    다음 번역 규칙을 따르십시오:
+    1.번역 과정에서 내용의 완전성과 일관성을 유지해야 하며, 어떠한 정보도 추가하거나 삭제해서는 안 됩니다.
+    2.번역된 텍스트가 자연스럽고 매끄러운 언어로 되어 있어야 하며, 가능한 한 중국어에서 가장 흔히 사용되는 표현 방식을 사용하고, 전문 용어는 해당되는 정해진 번역을 사용하여 한국어 표현 관습에 맞도록 하십시오.
+    3.일부 용어가 자연 언어가 아니라 수학 기호, 프로그래밍 언어 또는 LaTex 언어인 경우에는 원문을 직접 복사하십시오.
+    4.일부 용어에 한국어에 해당하는 단어가 없는 경우에도 원문을 직접 복사하십시오.
+    5.인용문과 참고 문헌에 대해서는 원문을 직접 복사하십시오.
+    ###
+    예시:
+    원문:
+    What time is it?
+    번역:
+    지금 몇 시예요?
+  prompt2: >
