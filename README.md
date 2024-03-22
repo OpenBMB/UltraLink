@@ -287,7 +287,7 @@ To generate multi-round dialogue datasets with the Multi-Round Dialogue Dataset 
 1. Open a command line interface (CLI) and navigate to the directory containing Monitor.py.
 1. Execute the script by running: 
 
-```
+```shell
 python Monitor.py 
     --wiki_path ./wikipedia/ \
     --question_path ./question \
@@ -350,7 +350,12 @@ Download datasets from [ShareGPT](https://sharegpt.com), [MetaMath](https://meta
 
 For the ShareGPT dataset, the command below is helpful to do the sifting task. Configuration on the input and output file path is needed.
 
+```python
+en_file = "sharegpt/sharegpt.jsonl" # input path
+out_file = "./sharegpt/sifted_sharegpt.jsonl" # output path
 ```
+
+```shell
 python sift_sharegpt.py
 ```
 
@@ -358,7 +363,7 @@ python sift_sharegpt.py
 
 4 designated types of conversion are supported which are ShareGPT, MetaMath, Magicoder and HumanEval.  4 python programs are helpful, which are ```convert_sharegpt.py```, ```convert_math.py```, ```convert_code.py```,  ```convert_humaneval.py```. An example is as below. 
 
-```
+```shell
 python convert_sharegpt.py
     --en_file ./sharegpt.jsonl
     --languages zh 
@@ -366,15 +371,17 @@ python convert_sharegpt.py
 
 To use GPT3.5, configuration on "*OPENAI_API_KEY*" is required. 2 lines need to be added in the python program. Below is an example.
 
-```
+```python
 os.environ["OPENAI_API_KEY"] = "xxxxx"
 os.environ["OPENAI_API_URL"] = "" # fill this with the website providng GPT service. 
 ```
-To use [Fasttext](https://fasttext.cc/docs/en/language-identification.html), please visit Fasttext and download their ```lid.176.bin```. Remember to modify the model path in ```utils.py```
+To use [Fasttext](https://fasttext.cc/docs/en/language-identification.html), run the script below.
 
+```shell
+wget https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin
+mv ./lid.176.bin ./model.bin
 ```
-check_language_type_model = fasttext.load_model("./model.bin") # modify the model path
-```
+
 ***Parameters:***
 
 For ```convert_{xxx}.py```
