@@ -32,7 +32,7 @@ Different from previous works that simply translate English instructions, **we c
 - **Developed by:** [OpenBMB]((https://www.openbmb.cn/home))
 - **Model type:** a Transformer style autoregressive massively multilingual language model.
 - **Paper**: [UltraLink: An Open-Source Knowledge-Enhanced Multilingual Supervised Fine-tuning Dataset](https://arxiv.org/abs/2402.04588)
-- **Languages**: Refer to the list of languages in the `language` section of this model card.
+- **Languages**: English, French, Russian, Spanish, and Chinese.
 - **License**: MIT
 - **Model**: [UltraLink-LM](https://huggingface.co/R0k1e/UltraLink-LM)
 - **Model Size**: 13 billion parameters
@@ -152,7 +152,7 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 
 
 ### Data Release
-The data consists of four parts, code data, math data, language-specific chat data, and language-agnostic chat data. Each type of data has been marked using the title of each file. For example, the en_code.jsonl specifies the English code data.
+UltraLink is now available on Huggingface with 4 types of data in 5 languages!
 
 - 🤗 [Huggingface Datasets Host](https://huggingface.co/datasets/R0k1e/UltraLink)
 
@@ -284,8 +284,8 @@ To generate multi-round dialogue datasets with the Multi-Round Dialogue Dataset 
 ***Step 3:***
 
 1. Locate the Monitor.py file within the Multi-Round Dialogue Dataset Generator's directory.
-1. Open a command line interface (CLI) and navigate to the directory containing Monitor.py.
-1. Execute the script by running: 
+2. Open a terminal and navigate to the directory containing Monitor.py.
+3. Execute the script by running: 
 
 ```shell
 python Monitor.py 
@@ -348,12 +348,14 @@ Download datasets from [ShareGPT](https://sharegpt.com), [MetaMath](https://meta
 
 ***Step2*: Filter out language-specific data**
 
-For the ShareGPT dataset, the command below is helpful to do the sifting task. Configuration on the input and output file path is needed.
+For the ShareGPT dataset, the command below is helpful to do the sifting task. Configuration on the input and output file path is needed. Modify ```sift_sharegpt.py``` like this.
 
 ```python
 en_file = "sharegpt/sharegpt.jsonl" # input path
 out_file = "./sharegpt/sifted_sharegpt.jsonl" # output path
 ```
+
+Then run the script.
 
 ```shell
 python sift_sharegpt.py
