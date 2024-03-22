@@ -261,9 +261,9 @@ In this study, we consider three key components of general abilities for LLMs: c
 
 > The Multi-Round Dialogue Dataset Generator leverages Wikipedia as a foundational source to create rich, multi-round dialogue datasets. The process unfolds in several key stages, outlined in our framework below:
 
-1. **Download and Extract Wikipedia Data**: With the text data prepared, the 'QuestionGenerator.py' script generates an initial question based on the content. This question mimics a natural, human inquiry that might arise from reading the text.
+1. **Download and Extract Wikipedia Data**: With the text data prepared, the ```QuestionGenerator.py``` script generates an initial question based on the content. This question mimics a natural, human inquiry that might arise from reading the text.
 2. **Generate Initial Question**: Uses code to preprocess data and generate figures, with self-debugging capabilities.
-3. **Generate Dialogue**: Taking both the original text and the initial question, the 'DialogGenerator.py' script then crafts a multi-round dialogue. This dialogue is designed to simulate a natural and engaging conversation that could occur between humans, grounded in the Wikipedia text.
+3. **Generate Dialogue**: Taking both the original text and the initial question, the ```DialogGenerator.py``` script then crafts a multi-round dialogue. This dialogue is designed to simulate a natural and engaging conversation that could occur between humans, grounded in the Wikipedia text.
 
 #### Usage Instructions
 
@@ -283,8 +283,8 @@ To generate multi-round dialogue datasets with the Multi-Round Dialogue Dataset 
 
 ***Step 3:***
 
-1. Locate the Monitor.py file within the Multi-Round Dialogue Dataset Generator's directory.
-2. Open a terminal and navigate to the directory containing Monitor.py.
+1. Locate the ```Monitor.py``` file within the Multi-Round Dialogue Dataset Generator's directory.
+2. Open a terminal and navigate to the directory containing ```Monitor.py```.
 3. Execute the script by running: 
 
 ```shell
