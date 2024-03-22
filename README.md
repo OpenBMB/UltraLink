@@ -41,8 +41,7 @@ Different from previous works that simply translate English instructions, **we c
 <details><summary> <b> Performance </b> </summary>
 <p>
 
-We report three evaluations in this section: multilingual HumanEval, MGSM, and OMGEval.
-Evaluations of modern LLMs may be biased and affected by many factors, we are also actively working on more comprehensive evaluation methods.
+We report 6 evaluations in this section: multilingual HumanEval, MGSM, OMGEval, ARC, Hellaswag and MMLU. Natural language generation performance is evaluated by HumanEval MGSM and OMGEval, while natural language understanding is evaluated by ARC, Hellaswag and MMLU. Evaluations of modern LLMs may be biased and affected by many factors, we are also actively working on more comprehensive evaluation methods. 
 
 ### Multilingual HumanEval 
 
@@ -50,7 +49,7 @@ Evaluations of modern LLMs may be biased and affected by many factors, we are al
 
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
-|Aya | 6.1 | 9.75 | 6.1 | 8.53 | 4.27 | 6.95 |
+|Aya-5-languages* | 6.1 | 9.75 | 6.1 | 8.53 | 4.27 | 6.95 |
 |Bloomz-7b1-mt | 8.5 | 7.3 | 6.1 | 8.5 | 6.1 | 7.3 |
 |Phoenix-inst-chat-7b | 11.0 | 10.4 | 8.5 | 1.2 | 13.4 | 12.2 |
 |PolyLM-Multialpaca-13b | 8.5 | 7.3 | 6.1 | 6.1 | 6.1 | 6.8 |
@@ -61,6 +60,7 @@ Evaluations of modern LLMs may be biased and affected by many factors, we are al
 |Guanaco-13b| 18.3 | 15.9 | 9.8 | 8.5 | 14.6 | 12.2 |
 |**UltraLink-LM**  | __60.4__ | __43.9__ | __40.9__ | __49.4__ | __39.6__ | __46.8__|
 
+\* Specially, Aya-5-languages is obtained by randomly extracting 3M data after selecting 5 languages(which are same languages that UltraLink supports) and then finetuned with 1 epoch on Llama-13b.
 
 ### MGSM
 
@@ -68,7 +68,7 @@ We employ [MGSM](https://github.com/google-research/url-nlp/tree/main/mgsm) to e
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
 |Aya-101| 8.8 | 4 | 6 | 8 | 9.2 | 7.2 |
-|Aya| 28.8 | 5.6 | 18 | 17.2 | 19.2 | 17.76 |
+|Aya-5-languages| 28.8 | 5.6 | 18 | 17.2 | 19.2 | 17.76 |
 |Bloomz-7b1-mt | 2.8 | 1.6 | 2.0 | 0.4 | 2.8 | 1.7 |
 |Phoenix-inst-chat-7b | 3.2 | 3.2 | 2.8 | 3.2 | 3.2 | 3.1 |
 |PolyLM-Multialpaca-13b | 1.2 | 2.8 | 1.6 | 2.8 | 2.4 | 2.4 |
@@ -85,7 +85,7 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 |Model|En|Zh|Es|Ru|Fr|Avg|
 |-----|---|---|---|---|---|---|
 |Aya-101 | 1.37 | 3.9 | 4.1 | 7.73 | 2.03 | 3.83 |
-|Aya | 27.61 | 16.88 | 20.51 | 34.25 | 16.75 | 23.2 |
+|Aya-5-languages | 27.61 | 16.88 | 20.51 | 34.25 | 16.75 | 23.2 |
 |Bloomz-7b1-mt | 0.0 | 0.9 | 0.1 | 0.5 | 0.3 | 0.4 |
 |Phoenix-inst-chat-7b  | 6.9 | 13.3 | 7.4 | 2.9 | 8.1 | 7.7 |
 |PolyLM-Multialpaca-13b  | 3.4 | 5.0 | 2.1 | 5.1 | 2.2 | 3.6 |
@@ -101,7 +101,7 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 | Model                  | En    | Zh    | Es    | Ru        | Fr    | Avg   |
 | ---------------------- | ----- | ----- | ----- | --------- | ----- | ----- |
 | Aya-101                | 73.08 | 51.88 | 43.33 | 45.42     | 55.77 | 53.90 |
-| Aya                    | 63.95 | 47.35 | 22.05 | 33.28     | 45.25 | 42.38 |
+| Aya-5-languages                    | 63.95 | 47.35 | 22.05 | 33.28     | 45.25 | 42.38 |
 | Bloomz-7b1-mt          | 77.51 | 57.79 | 60.60 | 35.59     | 60.74 | 58.45 |
 | Phoenix-inst-chat-7b   | 69.98 | 47.17 | 41.20 | 30.20     | 51.41 | 47.99 |
 | PolyLM-Multialpaca-13b | 31.06 | 25.51 | 21.54 | 27.97     | 29.00 | 27.01 |
@@ -117,9 +117,8 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 | Model                  | En        | Zh        | Es        | Ru        | Fr        | Avg      |
 | ---------------------- | --------- | --------- | --------- | --------- | --------- | -------- |
 | Aya-101                | 75.53     | 50.47     | 62.72     | 54.68     | 61.33     | 60.95    |
-| Aya-101 新测           | 42.97     | 38.14     | 40.81     | 38.74     | 40.98     | 40.33    |
-| aya-101 新框架         | 43.87     | /         | 41.7      | 39.45     | 41.49     | 41.63    |
-| Aya                    | 76.70     | 48.87     | 62.58     | 53.78     | 61.14     | 60.61    |
+| Aya-101(new frame)         | 43.87     | 38.14         | 41.7      | 39.45     | 41.49     | 41.63    |
+| Aya-5-languages                    | 76.70     | 48.87     | 62.58     | 53.78     | 61.14     | 60.61    |
 | Bloomz-7b1-mt          | 61.07     | 47.53     | 48.55     | 33.06     | 46.16     | 47.27    |
 | Phoenix-inst-chat-7b   | 56.75     | 49.07     | 54.28     | 32.50     | 53.21     | 49.16    |
 | PolyLM-Multialpaca-13b | 65.96     | 49.76     | 51.29     | 46.38     | 50.69     | 52.82    |
@@ -135,7 +134,7 @@ We use the [OMGEval](https://github.com/blcuicall/OMGEval) to evaluate the chat 
 | Model                  | En        | Zh        | Es        | Ru        | Fr        | Avg       |
 | ---------------------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Aya-101                | 39.94     | 40.69     | 41.38     | 39.99     | 41.19     | 40.64     |
-| Aya-old                | 51.52     | 38.68     | 44.85     | 40.82     | 45.23     | 44.22     |
+| Aya-5-languages                | 51.52     | 38.68     | 44.85     | 40.82     | 45.23     | 44.22     |
 | Bloomz-7b1-mt          | 35.89     | 33.56     | 34.67     | 25.88     | 35.1      | 33.02     |
 | Phoenix-inst-chat-7b   | 38.53     | 35.58     | 36.49     | 25.8      | 36.88     | 34.66     |
 | PolyLM-Multialpaca-13b | 26.7      | 25.63     | 24.98     | 24.72     | 25.51     | 25.51     |
@@ -258,13 +257,9 @@ In this study, we consider three key components of general abilities for LLMs: c
 
 ### Multi-Round Dialogue Dataset Generator for UltraLink
 
-> Welcome to the Multi-Round Dialogue Dataset Generator, a dedicated module within the expansive UltraLink project. UltraLink stands as a pioneering venture, aiming to revolutionize conversational AI through the creation of a multi-lingual, knowledge-grounded, data-augmented, multi-round dialogue dataset.
-
 > In pursuit of enriching UltraLink's dataset with diverse and realistic dialogues, we present the Multi-Round Dialogue Dataset Generator. This tool is ingeniously designed to harness the vast, encyclopedic wealth of Wikipedia, transforming its textual content into intricately structured, multi-round dialogues. Our generator is a cornerstone in expanding UltraLink's dataset, introducing a wealth of contextual, real-world knowledge into our dialogues, thus broadening the horizons for knowledge-grounded conversational AI.
 
-#### Framework Overview
-
-The Multi-Round Dialogue Dataset Generator leverages Wikipedia as a foundational source to create rich, multi-round dialogue datasets. The process unfolds in several key stages, outlined in our framework below:
+> The Multi-Round Dialogue Dataset Generator leverages Wikipedia as a foundational source to create rich, multi-round dialogue datasets. The process unfolds in several key stages, outlined in our framework below:
 
 1. **Download and Extract Wikipedia Data**: With the text data prepared, the 'QuestionGenerator.py' script generates an initial question based on the content. This question mimics a natural, human inquiry that might arise from reading the text.
 2. **Generate Initial Question**: Uses code to preprocess data and generate figures, with self-debugging capabilities.
@@ -302,51 +297,42 @@ python Monitor.py
 ```
 
 Ensure all argparse parameters are modified according to your specific requirements before running the script.
--- **wiki_path**: Specifies the path to the directory containing Wikipedia data extracted using WikiExtractor.
--- **question_path**: Designates the directory path where the generated questions will be stored.
--- **dialog_path**: Indicates the directory path where the generated dialogues will be stored.
 
-***Additional Information***
+***parameters:***
 
-- The process of generating dialogues can be time-consuming, depending on the volume of data and your computer's specifications.
-- Once completed, the generated dataset will be available in the script's specified output directory.
+```wiki_path```: Specifies the path to the directory containing the Wikipedia data extracted using WikiExtractor. This is the source data for generating dialogues.
 
+```question_path```: Designates the directory path where the generated questions will be stored. This path is used to save the initial questions that spark the dialogues.
 
-#### Command Line Interface Configuration (CLI Configuration)
+```dialog_path```: Indicates the directory path where the generated dialogues will be saved. This is where you can find the final output of the dialogue generation process.
 
--- **wiki_path**, -wi: Specifies the path to the directory containing the Wikipedia data extracted using WikiExtractor. This is the source data for generating dialogues.
+```save_interval```: Determines the frequency of saving the generated results to disk. A lower number means more frequent saves, which can be useful for large datasets.
 
--- **question_path**, -qp: Designates the directory path where the generated questions will be stored. This path is used to save the initial questions that spark the dialogues.
+```doc_num```: Defines the number of documents to process from the source data. Setting this to zero (0) processes all available documents.
 
--- **dialog_path**, -dp: Indicates the directory path where the generated dialogues will be saved. This is where you can find the final output of the dialogue generation process.
+```split_len```: The length of text after which it will be split into a new segment for dialogue generation. Helps manage the size of text chunks being processed.
 
--- **save_interval**, -si: Determines the frequency of saving the generated results to disk. A lower number means more frequent saves, which can be useful for large datasets.
+```max_len```: The maximum length of text considered for each segment of dialogue generation. Longer texts will be split according to the --split_len parameter.
 
--- **doc_num**, -dn: Defines the number of documents to process from the source data. Setting this to zero (0) processes all available documents.
+```min_len```: The minimum length of text required for it to be considered for dialogue generation. Shorter texts will be ignored.
 
--- **split_len**, -sl: The length of text after which it will be split into a new segment for dialogue generation. Helps manage the size of text chunks being processed.
+```min_answer_len```: Sets the minimum length for generated answers within dialogues. Ensures that responses are sufficiently informative.
 
--- **max_len**: The maximum length of text considered for each segment of dialogue generation. Longer texts will be split according to the --split_len parameter.
+```max_step_len```: The maximum step length when randomly selecting the next file for dialogue generation, helping to diversify the source texts.
 
--- **min_len**: The minimum length of text required for it to be considered for dialogue generation. Shorter texts will be ignored.
+```end_probability```: The initial probability of a dialogue ending after each exchange. This probability doubles with each extension of the dialogue length, simulating natural conversation closure.
 
--- **min_answer_len**, -mal: Sets the minimum length for generated answers within dialogues. Ensures that responses are sufficiently informative.
+```num_workers```: The number of worker processes used for parallel processing of data. Increasing this number can speed up the generation process on multi-core systems.
 
--- **max_step_len**, -msl: The maximum step length when randomly selecting the next file for dialogue generation, helping to diversify the source texts.
+```prompt_path```: The path to a YAML configuration file that defines prompts used for generating dialogues, allowing for custom initiation of conversations.
 
--- **end_probability**, -ep: The initial probability of a dialogue ending after each exchange. This probability doubles with each extension of the dialogue length, simulating natural conversation closure.
+```filter_path```: Specifies the path to a YAML file containing words that should be filtered out from the generated dialogues, ensuring content appropriateness.
 
--- **num_workers**, -nw: The number of worker processes used for parallel processing of data. Increasing this number can speed up the generation process on multi-core systems.
+```generate_without_doc```: A flag that, when set to true, enables the generation of dialogues without directly referencing the source documents, fostering creativity.
 
--- **prompt_path**, -pp: The path to a YAML configuration file that defines prompts used for generating dialogues, allowing for custom initiation of conversations.
+```language```: Indicates the language of the documents to be processed, enabling support for multi-lingual dialogue generation.
 
--- **filter_path**, -sp: Specifies the path to a YAML file containing words that should be filtered out from the generated dialogues, ensuring content appropriateness.
-
--- **generate_without_doc**, -gwd: A flag that, when set to true, enables the generation of dialogues without directly referencing the source documents, fostering creativity.
-
--- **language**, -l: Indicates the language of the documents to be processed, enabling support for multi-lingual dialogue generation.
-
--- **add_mode**, -am: A boolean flag that, when set, appends the generated results to an existing file instead of creating new ones, useful for continuous data accumulation.
+```add_mode```: A boolean flag that, when set, appends the generated results to an existing file instead of creating new ones, useful for continuous data accumulation.
 
 ### Multilingual Language-Agnostic Data Generator
 
@@ -384,8 +370,14 @@ To use GPT3.5, configuration on "*OPENAI_API_KEY*" is required. 2 lines need to 
 os.environ["OPENAI_API_KEY"] = "xxxxx"
 os.environ["OPENAI_API_URL"] = "" # fill this with the website providng GPT service. 
 ```
+To use [Fasttext](https://fasttext.cc/docs/en/language-identification.html), please visit Fasttext and download their ```lid.176.bin```. Remember to modify the model path in ```utils.py```
 
+```
+check_language_type_model = fasttext.load_model("./model.bin") # modify the model path
+```
 ***Parameters:***
+
+For ```convert_{xxx}.py```
 
 ```en_file``` is the path of file to be converted.
 
@@ -396,6 +388,11 @@ os.environ["OPENAI_API_URL"] = "" # fill this with the website providng GPT serv
 ```worker_num``` is the maximum number of worker threads which request translations. 
 
 ```prompt_path``` is the path of prompt configuration file. You can modify the prompt configuration file to obtain data of more languages.
+
+***Additional Information***
+
+- The process of generating data can be time-consuming, depending on the volume of data and your computer's specifications.
+- Once completed, the generated dataset will be available in the script's specified output directory.
 
 ## To Do
 
