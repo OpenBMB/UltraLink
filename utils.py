@@ -24,7 +24,7 @@ check_language_type_model = fasttext.load_model("./model.bin")
 encoding = tiktoken.encoding_for_model('gpt-3.5-turbo')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--wiki_path', '-wi',type=str, default='/data/public/wangshuo/projects/wikipedia/')
+parser.add_argument('--wiki_path', '-wi',type=str)
 parser.add_argument('--question_path', '-qp', type=str, default='./data') #存问题
 parser.add_argument('--dialog_path', '-dp', type=str, default='./dialog') #存对话
 parser.add_argument("--save_interval", "-si", type=int, default=1, help="the interval of saving result")
