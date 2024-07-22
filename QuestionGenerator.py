@@ -70,6 +70,8 @@ class QuestionGenerator:
     def is_filter(self, text):
         """使用正则表达式检查文本是否包含filter_word"""
         #print(self.filter_words)
+        if self.filter_words == []:
+            return False
         pattern = '|'.join([re.escape(word) for word in self.filter_words])
         #print("构建的正则表达式:", pattern)
         #print(bool(re.search(pattern, text, re.IGNORECASE)))
