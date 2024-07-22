@@ -171,15 +171,21 @@ def convert_to_simple_chinese(text):
 def get_not_dialog_questions(question_path, dialog_path, language):
 #从给定的问题文件中找出那些还没有被转换成对话格式的问题。
 #主要用于处理和管理一个包含大量问题的数据集，其中一些问题可能已经被用于生成对话数据，而其他问题尚未使用。
-    with open(question_path, 'r') as f:
-        questions = f.readlines()
-    with open(dialog_path, 'r') as f:
-        dialogs = f.readlines()
-    questions = [question.strip() for question in questions if language in question]
-    questions = set(questions)
-    dialogs = ["_".join(dialog.replace("dialog", "data").split('_')[:-1])+".jsonl" for dialog in dialogs if language in dialog]
-    #差集操作：函数将问题集合与对话集合进行差集操作，得到那些存在于问题集合中但不在对话集合中的问题，即那些尚未被转换成对话格式的问题。
-    dialogs = set(dialogs)
+    if os.path.exists(question_path) == False:
+        questions = set()
+    else:
+        with open(question_path, 'r') as f:
+            questions = f.readlines()
+        questions = [question.strip() for question in questions if language in question]
+        questions = set(questions)
+    if os.path.exists(dialog_path) == False:
+        dialogs = set()
+    else:
+        with open(dialog_path, 'r') as f:
+            dialogs = f.readlines()
+        dialogs = ["_".join(dialog.replace("dialog", "data").split('_')[:-1])+".jsonl" for dialog in dialogs if language in dialog]
+        #差集操作：函数将问题集合与对话集合进行差集操作，得到那些存在于问题集合中但不在对话集合中的问题，即那些尚未被转换成对话格式的问题。
+        dialogs = set(dialogs)
     return list(questions - dialogs) #返回一个列表，包含所有尚未被转换成对话格式的问题。
 
 class ProbabilityIterator:
