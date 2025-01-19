@@ -8,7 +8,7 @@
  <a href="#Construction-of-UltraLink">Construction Process</a> 
  <br>•
  <a href="#Dataset-Generator">Dataset Generator</a> •
- <a href="https://arxiv.org/abs/2402.04588">Paper</a> •
+ <a href="https://aclanthology.org/2024.acl-long.644/">Paper</a> •
  <a href="https://huggingface.co/datasets/R0k1e/UltraLink"> UltraLink</a> •
  <a href="https://huggingface.co/R0k1e/UltraLink-LM"> UltraLink-LM</a>
 </p>
